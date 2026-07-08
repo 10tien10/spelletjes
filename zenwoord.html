@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Zenwoord</title>
+<style>
+  :root{
+    --bg1:#f6ede0; --bg2:#e7d7c4; --bg3:#d9c3ad;
+    --ink:#3a4a4a; --ink-soft:#7d8a86;
+    --tile:#fffdf8; --tile-edge:#e5d8c6;
+    --accent:#c9825b; --accent-soft:#e6b28c;
+    --teal:#3f6f6a; --teal-deep:#2c4f4b;
+    --gold:#d9a441;
+    --shadow:rgba(90,70,50,.18);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;height:100%;}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    color:var(--ink);
+    background:linear-gradient(160deg,var(--bg1),var(--bg2) 55%,var(--bg3));
+    background-attachment:fixed;
+    display:flex;flex-direction:column;align-items:center;
+    min-height:100%;overflow:hidden;
+    user-select:none;-webkit-user-select:none;touch-action:none;
+  }
+  #app{width:100%;max-width:520px;flex:1;display:flex;flex-direction:column;
+    padding:calc(env(safe-area-inset-top) + 8px) 14px calc(env(safe-area-inset-bottom) + 10px);}
+  header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 2px 2px;}
+  .brand{font-family:Georgia,"Times New Roman",serif;font-size:22px;letter-spacing:.5px;color:var(--teal-deep);}
+  .brand small{display:block;font-family:system-ui;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--ink-soft);font-weight:600;}
+  .hdr-right{display:flex;align-items:center;gap:8px;}
+  .pill{background:var(--tile);border:1px solid var(--tile-edge);border-radius:20px;padding:5px 11px;font-size:13px;font-weight:600;color:var(--teal);box-shadow:0 2px 5px var(--shadow);}
+  .icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--tile-edge);background:var(--tile);
+    display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--teal);box-shadow:0 2px 5px var(--shadow);cursor:pointer;}
+  .icon-btn:active{transform:scale(.94);}
+
+  #gridWrap{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:6px 0;}
+  #grid{display:grid;gap:5px;}
+  .cell{border-radius:9px;display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:var(--teal-deep);text-transform:uppercase;
+    background:var(--tile);border:1px solid var(--tile-edge);box-shadow:inset 0 -2px 0 rgba(0,0,0,.04);}
+  .cell.empty{visibility:hidden;}
+  .cell.hidden-letter{color:transparent;}
+  .cell.reveal{animation:pop .38s ease;background:#fbf4e8;}
+  .cell.hintflash{animation:hintp 1s ease;}
+  @keyframes pop{0%{transform:scale(.4);}60%{transform:scale(1.12);}100%{transform:scale(1);}}
+  @keyframes hintp{0%,100%{box-shadow:inset 0 -2px 0 rgba(0,0,0,.04);}50%{box-shadow:0 0 0 3px var(--gold);}}
+
+  #current{height:44px;display:flex;align-items:center;justify-content:center;margin:2px 0 6px;}
+  #currentInner{min-width:70px;padding:7px 18px;border-radius:24px;font-size:22px;font-weight:800;letter-spacing:5px;
+    color:#fff;background:var(--teal);box-shadow:0 4px 12px var(--shadow);text-transform:uppercase;transition:background .15s;opacity:0;transform:translateY(6px);}
+  #currentInner.show{opacity:1;transform:none;}
+  #currentInner.bad{background:var(--accent);}
+  #currentInner.good{background:var(--gold);}
+
+  #wheelWrap{position:relative;width:280px;height:280px;margin:0 auto 4px;touch-action:none;}
+  #wheelSvg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+  .letter{position:absolute;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:27px;font-weight:800;text-transform:uppercase;
+    background:var(--tile);color:var(--teal-deep);border:1px solid var(--tile-edge);
+    box-shadow:0 4px 9px var(--shadow);transition:transform .12s, background .12s,color .12s;}
+  .letter.sel{background:var(--teal);color:#fff;transform:scale(1.08);}
+  #wheelDisc{position:absolute;inset:22px;border-radius:50%;background:rgba(255,253,248,.5);border:1px solid var(--tile-edge);}
+
+  footer{display:flex;gap:12px;justify-content:center;padding-top:2px;}
+  .act{flex:1;max-width:150px;padding:12px;border-radius:16px;border:none;font-size:15px;font-weight:700;
+    background:var(--tile);color:var(--teal);box-shadow:0 3px 8px var(--shadow);display:flex;align-items:center;justify-content:center;gap:7px;cursor:pointer;}
+  .act:active{transform:scale(.96);}
+  .act .n{font-size:12px;background:var(--accent);color:#fff;border-radius:10px;padding:1px 6px;}
+
+  /* overlays */
+  .overlay{position:fixed;inset:0;background:rgba(58,74,74,.35);backdrop-filter:blur(3px);
+    display:none;align-items:center;justify-content:center;z-index:20;padding:22px;}
+  .overlay.show{display:flex;}
+  .card{background:linear-gradient(160deg,#fffdf8,#f4e9d8);border-radius:24px;padding:26px 24px;max-width:340px;width:100%;
+    text-align:center;box-shadow:0 18px 50px rgba(50,40,30,.35);}
+  .card h2{font-family:Georgia,serif;color:var(--teal-deep);margin:6px 0 4px;font-size:26px;}
+  .card p{color:var(--ink-soft);margin:0 0 18px;font-size:15px;}
+  .card .big{font-size:44px;margin-bottom:4px;}
+  .btn{display:block;width:100%;padding:14px;border-radius:14px;border:none;font-size:16px;font-weight:700;
+    background:var(--teal);color:#fff;margin-top:9px;cursor:pointer;box-shadow:0 4px 10px var(--shadow);}
+  .btn.ghost{background:transparent;color:var(--teal);border:1px solid var(--tile-edge);box-shadow:none;}
+  .btn:active{transform:scale(.97);}
+
+  #levelGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px;max-height:56vh;overflow:auto;padding:2px;}
+  .lvl{aspect-ratio:1;border-radius:14px;background:var(--tile);border:1px solid var(--tile-edge);display:flex;
+    align-items:center;justify-content:center;font-weight:800;color:var(--teal);font-size:16px;box-shadow:0 2px 5px var(--shadow);cursor:pointer;position:relative;}
+  .lvl.done{background:var(--teal);color:#fff;}
+  .lvl.locked{color:var(--ink-soft);opacity:.5;}
+  .lvl.cur{outline:3px solid var(--gold);}
+  .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 96px);transform:translateX(-50%);
+    background:var(--teal-deep);color:#fff;padding:9px 16px;border-radius:20px;font-size:14px;font-weight:600;
+    opacity:0;transition:opacity .25s;z-index:30;pointer-events:none;}
+  .toast.show{opacity:1;}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="brand">Zenwoord<small>rustig woordspel</small></div>
+    <div class="hdr-right">
+      <span class="pill" id="progressPill">0/0</span>
+      <div class="icon-btn" id="menuBtn">☰</div>
+    </div>
+  </header>
+
+  <div id="gridWrap"><div id="grid"></div></div>
+
+  <div id="current"><div id="currentInner"></div></div>
+
+  <div id="wheelWrap">
+    <div id="wheelDisc"></div>
+    <svg id="wheelSvg"></svg>
+  </div>
+
+  <footer>
+    <button class="act" id="hintBtn">💡 Hint <span class="n" id="hintCount">0</span></button>
+    <button class="act" id="shuffleBtn">🔀 Husselen</button>
+  </footer>
+</div>
+
+<div class="overlay" id="winOverlay">
+  <div class="card">
+    <div class="big">🌿</div>
+    <h2 id="winTitle">Level voltooid!</h2>
+    <p id="winSub">Mooi gedaan.</p>
+    <button class="btn" id="nextBtn">Volgende level →</button>
+    <button class="btn ghost" id="winMenuBtn">Levels</button>
+  </div>
+</div>
+
+<div class="overlay" id="menuOverlay">
+  <div class="card">
+    <h2>Kies een level</h2>
+    <p id="menuSub">Getikte levels zijn voltooid.</p>
+    <div id="levelGrid"></div>
+    <button class="btn ghost" id="menuCloseBtn" style="margin-top:16px;">Sluiten</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const PUZZLES = [{"pool":"KATER","letters":["K","A","T","E","R"],"grid":{"words":[{"word":"KATER","row":0,"col":0,"dir":"H"},{"word":"KAT","row":0,"col":0,"dir":"V"},{"word":"TAK","row":0,"col":2,"dir":"V"},{"word":"RAT","row":0,"col":4,"dir":"V"},{"word":"TREK","row":2,"col":4,"dir":"H"}],"rows":3,"cols":8,"area":24}},{"pool":"BOTER","letters":["B","O","T","E","R"],"grid":{"words":[{"word":"BOTER","row":2,"col":0,"dir":"H"},{"word":"ROT","row":1,"col":1,"dir":"V"},{"word":"BOER","row":0,"col":3,"dir":"V"},{"word":"BOT","row":0,"col":3,"dir":"H"}],"rows":4,"cols":6,"area":24}},{"pool":"STOEL","letters":["S","T","O","E","L"],"grid":{"words":[{"word":"LOT","row":0,"col":0,"dir":"H"},{"word":"LOS","row":0,"col":0,"dir":"V"},{"word":"SLOT","row":2,"col":0,"dir":"H"},{"word":"STOEL","row":1,"col":3,"dir":"V"},{"word":"TOL","row":5,"col":1,"dir":"H"}],"rows":6,"cols":4,"area":24}},{"pool":"BLOEM","letters":["B","L","O","E","M"],"grid":{"words":[{"word":"BLOEM","row":2,"col":0,"dir":"H"},{"word":"BEL","row":2,"col":0,"dir":"V"},{"word":"BOL","row":0,"col":1,"dir":"V"},{"word":"MOL","row":2,"col":4,"dir":"V"}],"rows":5,"cols":5,"area":25}},{"pool":"PLANT","letters":["P","L","A","N","T"],"grid":{"words":[{"word":"LAT","row":4,"col":0,"dir":"H"},{"word":"PAL","row":2,"col":0,"dir":"V"},{"word":"PLAN","row":2,"col":0,"dir":"H"},{"word":"PLANT","row":0,"col":2,"dir":"V"},{"word":"TAP","row":0,"col":0,"dir":"H"}],"rows":5,"cols":4,"area":20}},{"pool":"WATER","letters":["W","A","T","E","R"],"grid":{"words":[{"word":"WATER","row":1,"col":0,"dir":"H"},{"word":"RAT","row":0,"col":1,"dir":"V"},{"word":"WRAT","row":0,"col":4,"dir":"V"},{"word":"WAT","row":3,"col":2,"dir":"H"}],"rows":4,"cols":5,"area":20}},{"pool":"KLANT","letters":["K","L","A","N","T"],"grid":{"words":[{"word":"LAT","row":2,"col":0,"dir":"H"},{"word":"TANK","row":1,"col":1,"dir":"V"},{"word":"KANT","row":4,"col":1,"dir":"H"},{"word":"KLANT","row":0,"col":4,"dir":"V"},{"word":"TAK","row":0,"col":2,"dir":"H"}],"rows":5,"cols":5,"area":25}},{"pool":"STORM","letters":["S","T","O","R","M"],"grid":{"words":[{"word":"STORM","row":2,"col":1,"dir":"H"},{"word":"ROT","row":0,"col":2,"dir":"V"},{"word":"TOR","row":0,"col":0,"dir":"H"},{"word":"MOT","row":2,"col":5,"dir":"V"}],"rows":5,"cols":6,"area":30}},{"pool":"FRUIT","letters":["F","R","U","I","T"],"grid":{"words":[{"word":"TURF","row":2,"col":0,"dir":"H"},{"word":"RIT","row":0,"col":0,"dir":"V"},{"word":"FRUIT","row":1,"col":2,"dir":"V"},{"word":"UIT","row":4,"col":1,"dir":"H"}],"rows":6,"cols":4,"area":24}},{"pool":"STOEP","letters":["S","T","O","E","P"],"grid":{"words":[{"word":"STOEP","row":3,"col":0,"dir":"H"},{"word":"POES","row":0,"col":0,"dir":"V"},{"word":"POST","row":2,"col":2,"dir":"V"},{"word":"STOP","row":5,"col":1,"dir":"H"},{"word":"PEST","row":0,"col":0,"dir":"H"}],"rows":6,"cols":5,"area":30}},{"pool":"MELK","letters":["M","E","L","K"],"grid":{"words":[{"word":"KLEM","row":2,"col":0,"dir":"H"},{"word":"ELK","row":0,"col":0,"dir":"V"},{"word":"MELK","row":1,"col":2,"dir":"V"},{"word":"LEK","row":4,"col":0,"dir":"H"}],"rows":5,"cols":4,"area":20}},{"pool":"HAMER","letters":["H","A","M","E","R"],"grid":{"words":[{"word":"HAMER","row":2,"col":0,"dir":"H"},{"word":"HAM","row":2,"col":0,"dir":"V"},{"word":"ARM","row":0,"col":2,"dir":"V"},{"word":"RAM","row":0,"col":1,"dir":"H"}],"rows":5,"cols":5,"area":25}},{"pool":"BEKER","letters":["B","E","K","E","R"],"grid":{"words":[{"word":"KEER","row":2,"col":0,"dir":"H"},{"word":"BEKER","row":0,"col":0,"dir":"V"},{"word":"REK","row":4,"col":0,"dir":"H"},{"word":"BEK","row":0,"col":0,"dir":"H"}],"rows":5,"cols":4,"area":20}},{"pool":"TAFEL","letters":["T","A","F","E","L"],"grid":{"words":[{"word":"FEL","row":2,"col":1,"dir":"H"},{"word":"LAT","row":2,"col":3,"dir":"V"},{"word":"TAFEL","row":0,"col":1,"dir":"V"},{"word":"FLAT","row":4,"col":0,"dir":"H"}],"rows":5,"cols":4,"area":20}},{"pool":"SLANG","letters":["S","L","A","N","G"],"grid":{"words":[{"word":"LANG","row":2,"col":0,"dir":"H"},{"word":"SLANG","row":1,"col":0,"dir":"V"},{"word":"LAG","row":0,"col":3,"dir":"V"},{"word":"GANS","row":5,"col":0,"dir":"H"}],"rows":6,"cols":4,"area":24}},{"pool":"MOLEN","letters":["M","O","L","E","N"],"grid":{"words":[{"word":"MEN","row":1,"col":2,"dir":"H"},{"word":"MOL","row":1,"col":2,"dir":"V"},{"word":"MOLEN","row":3,"col":0,"dir":"H"},{"word":"NOEM","row":0,"col":0,"dir":"V"}],"rows":4,"cols":5,"area":20}},{"pool":"REGEN","letters":["R","E","G","E","N"],"grid":{"words":[{"word":"EER","row":1,"col":2,"dir":"H"},{"word":"GENRE","row":0,"col":2,"dir":"V"},{"word":"GEN","row":2,"col":0,"dir":"H"},{"word":"ERG","row":0,"col":4,"dir":"V"},{"word":"REGEN","row":0,"col":0,"dir":"V"}],"rows":5,"cols":5,"area":25}},{"pool":"VOGEL","letters":["V","O","G","E","L"],"grid":{"words":[{"word":"EGO","row":2,"col":5,"dir":"H"},{"word":"LOG","row":0,"col":6,"dir":"V"},{"word":"VOGEL","row":0,"col":2,"dir":"H"},{"word":"VLO","row":0,"col":2,"dir":"V"},{"word":"VLOG","row":2,"col":0,"dir":"H"}],"rows":3,"cols":8,"area":24}},{"pool":"TUIN","letters":["T","U","I","N"],"grid":{"words":[{"word":"TUIN","row":0,"col":0,"dir":"H"},{"word":"TIN","row":0,"col":0,"dir":"V"},{"word":"NUT","row":2,"col":0,"dir":"H"},{"word":"UIT","row":2,"col":1,"dir":"V"}],"rows":5,"cols":4,"area":20}},{"pool":"TAND","letters":["T","A","N","D"],"grid":{"words":[{"word":"NAT","row":2,"col":0,"dir":"H"},{"word":"DAN","row":0,"col":0,"dir":"V"},{"word":"TAND","row":2,"col":2,"dir":"V"}],"rows":6,"cols":3,"area":18}},{"pool":"RAAM","letters":["R","A","A","M"],"grid":{"words":[{"word":"RAM","row":0,"col":0,"dir":"H"},{"word":"RAAM","row":0,"col":0,"dir":"V"},{"word":"ARM","row":2,"col":0,"dir":"H"},{"word":"MAAR","row":2,"col":2,"dir":"V"}],"rows":6,"cols":3,"area":18}},{"pool":"LAMP","letters":["L","A","M","P"],"grid":{"words":[{"word":"LAP","row":0,"col":0,"dir":"H"},{"word":"LAMP","row":0,"col":0,"dir":"V"},{"word":"MAP","row":2,"col":0,"dir":"H"},{"word":"PAL","row":2,"col":2,"dir":"V"}],"rows":5,"cols":3,"area":15}},{"pool":"APPEL","letters":["A","P","P","E","L"],"grid":{"words":[{"word":"APPEL","row":1,"col":2,"dir":"H"},{"word":"PAL","row":0,"col":2,"dir":"V"},{"word":"APP","row":0,"col":4,"dir":"V"},{"word":"LAP","row":0,"col":0,"dir":"H"}],"rows":3,"cols":7,"area":21}},{"pool":"SPORT","letters":["S","P","O","R","T"],"grid":{"words":[{"word":"SPORT","row":0,"col":1,"dir":"H"},{"word":"POST","row":0,"col":2,"dir":"V"},{"word":"STOP","row":2,"col":2,"dir":"H"},{"word":"ROT","row":3,"col":0,"dir":"H"}],"rows":4,"cols":6,"area":24}},{"pool":"VLOER","letters":["V","L","O","E","R"],"grid":{"words":[{"word":"VER","row":0,"col":2,"dir":"H"},{"word":"ROL","row":0,"col":4,"dir":"V"},{"word":"VLOER","row":0,"col":2,"dir":"V"},{"word":"VOL","row":1,"col":0,"dir":"H"},{"word":"OVER","row":0,"col":0,"dir":"V"}],"rows":5,"cols":5,"area":25}},{"pool":"WORTEL","letters":["W","O","R","T","E","L"],"grid":{"words":[{"word":"WORTEL","row":0,"col":0,"dir":"H"},{"word":"WOL","row":0,"col":0,"dir":"V"},{"word":"ROL","row":0,"col":2,"dir":"V"},{"word":"LOT","row":2,"col":2,"dir":"H"}],"rows":3,"cols":6,"area":18}},{"pool":"VADER","letters":["V","A","D","E","R"],"grid":{"words":[{"word":"RED","row":4,"col":1,"dir":"H"},{"word":"VADER","row":0,"col":1,"dir":"V"},{"word":"RAD","row":2,"col":3,"dir":"V"},{"word":"VER","row":0,"col":1,"dir":"H"},{"word":"ADER","row":2,"col":0,"dir":"H"}],"rows":5,"cols":4,"area":20}},{"pool":"WINKEL","letters":["W","I","N","K","E","L"],"grid":{"words":[{"word":"WINKEL","row":0,"col":0,"dir":"H"},{"word":"KLEIN","row":0,"col":3,"dir":"V"},{"word":"KNIE","row":2,"col":0,"dir":"H"},{"word":"LINK","row":0,"col":5,"dir":"V"},{"word":"WENK","row":4,"col":1,"dir":"H"}],"rows":5,"cols":6,"area":30}},{"pool":"KAARS","letters":["K","A","A","R","S"],"grid":{"words":[{"word":"ARK","row":1,"col":0,"dir":"H"},{"word":"RAAK","row":0,"col":0,"dir":"V"},{"word":"KRAS","row":1,"col":2,"dir":"V"},{"word":"KAARS","row":3,"col":0,"dir":"H"},{"word":"RAS","row":1,"col":4,"dir":"V"}],"rows":5,"cols":5,"area":25}},{"pool":"STRAND","letters":["S","T","R","A","N","D"],"grid":{"words":[{"word":"RAT","row":1,"col":0,"dir":"H"},{"word":"RAND","row":1,"col":0,"dir":"V"},{"word":"STAND","row":0,"col":2,"dir":"V"},{"word":"STRAND","row":0,"col":2,"dir":"H"},{"word":"DANS","row":4,"col":2,"dir":"H"}],"rows":5,"cols":8,"area":40}},{"pool":"NACHT","letters":["N","A","C","H","T"],"grid":{"words":[{"word":"NACHT","row":0,"col":0,"dir":"H"},{"word":"NAT","row":0,"col":0,"dir":"V"},{"word":"CHAT","row":0,"col":2,"dir":"V"},{"word":"ACHT","row":2,"col":2,"dir":"H"}],"rows":4,"cols":6,"area":24}},{"pool":"STEEN","letters":["S","T","E","E","N"],"grid":{"words":[{"word":"NET","row":0,"col":0,"dir":"H"},{"word":"NEST","row":0,"col":0,"dir":"V"},{"word":"TEEN","row":0,"col":2,"dir":"V"},{"word":"STEEN","row":2,"col":0,"dir":"H"},{"word":"EEN","row":0,"col":4,"dir":"V"}],"rows":4,"cols":5,"area":20}},{"pool":"DRAAD","letters":["D","R","A","A","D"],"grid":{"words":[{"word":"RAAD","row":1,"col":0,"dir":"H"},{"word":"DRAAD","row":0,"col":0,"dir":"V"},{"word":"RAD","row":0,"col":2,"dir":"V"},{"word":"DAAR","row":4,"col":0,"dir":"H"}],"rows":5,"cols":4,"area":20}},{"pool":"MAAND","letters":["M","A","A","N","D"],"grid":{"words":[{"word":"MAAND","row":1,"col":0,"dir":"H"},{"word":"MAAN","row":1,"col":0,"dir":"V"},{"word":"DAN","row":0,"col":2,"dir":"V"},{"word":"NAAM","row":4,"col":0,"dir":"H"},{"word":"DAM","row":1,"col":4,"dir":"V"}],"rows":5,"cols":5,"area":25}},{"pool":"KAART","letters":["K","A","A","R","T"],"grid":{"words":[{"word":"RAT","row":4,"col":0,"dir":"H"},{"word":"KAR","row":2,"col":0,"dir":"V"},{"word":"KAART","row":2,"col":0,"dir":"H"},{"word":"KAT","row":0,"col":4,"dir":"V"},{"word":"RAAK","row":0,"col":1,"dir":"H"}],"rows":5,"cols":5,"area":25}},{"pool":"PAARD","letters":["P","A","A","R","D"],"grid":{"words":[{"word":"PAD","row":1,"col":0,"dir":"H"},{"word":"DAAR","row":0,"col":1,"dir":"V"},{"word":"RAAD","row":3,"col":1,"dir":"H"},{"word":"PAARD","row":2,"col":3,"dir":"V"},{"word":"PAAR","row":5,"col":0,"dir":"H"}],"rows":7,"cols":5,"area":35}},{"pool":"STRAAT","letters":["S","T","R","A","A","T"],"grid":{"words":[{"word":"STRAAT","row":0,"col":0,"dir":"H"},{"word":"TAART","row":0,"col":1,"dir":"V"},{"word":"RAT","row":2,"col":0,"dir":"H"},{"word":"STAART","row":4,"col":0,"dir":"H"}],"rows":5,"cols":6,"area":30}},{"pool":"TOMAAT","letters":["T","O","M","A","A","T"],"grid":{"words":[{"word":"TAM","row":2,"col":0,"dir":"H"},{"word":"MOT","row":0,"col":0,"dir":"V"},{"word":"TOMAAT","row":0,"col":2,"dir":"V"},{"word":"MAT","row":0,"col":0,"dir":"H"},{"word":"MAAT","row":4,"col":0,"dir":"H"}],"rows":6,"cols":4,"area":24}},{"pool":"BANAAN","letters":["B","A","N","A","A","N"],"grid":{"words":[{"word":"BAN","row":5,"col":0,"dir":"H"},{"word":"BAAN","row":5,"col":0,"dir":"V"},{"word":"AAN","row":7,"col":0,"dir":"H"},{"word":"BANAAN","row":0,"col":2,"dir":"V"}],"rows":9,"cols":3,"area":27}},{"pool":"MARKT","letters":["M","A","R","K","T"],"grid":{"words":[{"word":"MARKT","row":1,"col":0,"dir":"H"},{"word":"MARK","row":1,"col":0,"dir":"V"},{"word":"ARM","row":0,"col":2,"dir":"V"},{"word":"KRAT","row":4,"col":0,"dir":"H"},{"word":"TAK","row":1,"col":4,"dir":"V"}],"rows":5,"cols":5,"area":25}},{"pool":"KAMER","letters":["K","A","M","E","R"],"grid":{"words":[{"word":"RAM","row":2,"col":0,"dir":"H"},{"word":"MARK","row":0,"col":0,"dir":"V"},{"word":"KAMER","row":0,"col":2,"dir":"V"},{"word":"MAKER","row":0,"col":0,"dir":"H"},{"word":"ARM","row":4,"col":1,"dir":"H"}],"rows":5,"cols":5,"area":25}},{"pool":"HANDEL","letters":["H","A","N","D","E","L"],"grid":{"words":[{"word":"HAL","row":0,"col":5,"dir":"H"},{"word":"HELD","row":0,"col":5,"dir":"V"},{"word":"LAND","row":0,"col":7,"dir":"V"},{"word":"HANDEL","row":2,"col":0,"dir":"H"},{"word":"HAND","row":0,"col":2,"dir":"V"}],"rows":4,"cols":8,"area":32}},{"pool":"ZUSTER","letters":["Z","U","S","T","E","R"],"grid":{"words":[{"word":"RUST","row":0,"col":2,"dir":"H"},{"word":"STER","row":0,"col":4,"dir":"V"},{"word":"ZUSTER","row":2,"col":0,"dir":"H"},{"word":"ZUS","row":1,"col":1,"dir":"V"}],"rows":4,"cols":6,"area":24}},{"pool":"MOEDER","letters":["M","O","E","D","E","R"],"grid":{"words":[{"word":"MOEDER","row":1,"col":0,"dir":"H"},{"word":"MODE","row":1,"col":0,"dir":"V"},{"word":"MEER","row":0,"col":2,"dir":"V"},{"word":"ROEM","row":3,"col":2,"dir":"H"}],"rows":5,"cols":6,"area":30}},{"pool":"BAARD","letters":["B","A","A","R","D"],"grid":{"words":[{"word":"BAR","row":0,"col":4,"dir":"H"},{"word":"BAD","row":0,"col":4,"dir":"V"},{"word":"RAAD","row":0,"col":6,"dir":"V"},{"word":"BAARD","row":2,"col":0,"dir":"H"},{"word":"DAAR","row":0,"col":2,"dir":"V"}],"rows":4,"cols":7,"area":28}},{"pool":"LADER","letters":["L","A","D","E","R"],"grid":{"words":[{"word":"DEAL","row":2,"col":0,"dir":"H"},{"word":"LADE","row":0,"col":0,"dir":"V"},{"word":"ADER","row":2,"col":2,"dir":"V"},{"word":"LADER","row":0,"col":0,"dir":"H"},{"word":"RAD","row":5,"col":2,"dir":"H"}],"rows":6,"cols":5,"area":30}},{"pool":"SALON","letters":["S","A","L","O","N"],"grid":{"words":[{"word":"LOS","row":0,"col":2,"dir":"H"},{"word":"LAS","row":0,"col":2,"dir":"V"},{"word":"SALON","row":0,"col":4,"dir":"V"},{"word":"SLA","row":1,"col":0,"dir":"H"}],"rows":5,"cols":5,"area":25}},{"pool":"BUREN","letters":["B","U","R","E","N"],"grid":{"words":[{"word":"BUREN","row":0,"col":2,"dir":"H"},{"word":"BEN","row":0,"col":2,"dir":"V"},{"word":"RUN","row":0,"col":4,"dir":"V"},{"word":"URN","row":2,"col":0,"dir":"H"}],"rows":3,"cols":7,"area":21}},{"pool":"SPELEN","letters":["S","P","E","L","E","N"],"grid":{"words":[{"word":"SPELEN","row":1,"col":1,"dir":"H"},{"word":"SPEL","row":1,"col":1,"dir":"V"},{"word":"PEN","row":0,"col":3,"dir":"V"},{"word":"LES","row":3,"col":0,"dir":"H"},{"word":"NEP","row":0,"col":5,"dir":"V"}],"rows":5,"cols":7,"area":35}},{"pool":"STRENG","letters":["S","T","R","E","N","G"],"grid":{"words":[{"word":"STRENG","row":1,"col":0,"dir":"H"},{"word":"ERG","row":0,"col":2,"dir":"V"},{"word":"STER","row":1,"col":0,"dir":"V"},{"word":"NEST","row":1,"col":4,"dir":"V"}],"rows":5,"cols":6,"area":30}},{"pool":"KRACHT","letters":["K","R","A","C","H","T"],"grid":{"words":[{"word":"ACHT","row":0,"col":1,"dir":"H"},{"word":"CHAT","row":0,"col":2,"dir":"V"},{"word":"KRACHT","row":2,"col":0,"dir":"H"},{"word":"KAR","row":2,"col":0,"dir":"V"},{"word":"TAK","row":2,"col":5,"dir":"V"}],"rows":5,"cols":6,"area":30}},{"pool":"SLAPEN","letters":["S","L","A","P","E","N"],"grid":{"words":[{"word":"PLAN","row":2,"col":0,"dir":"H"},{"word":"SLAPEN","row":1,"col":1,"dir":"V"},{"word":"PLAS","row":4,"col":1,"dir":"H"},{"word":"PAN","row":0,"col":3,"dir":"V"},{"word":"SLA","row":4,"col":4,"dir":"V"},{"word":"SPAN","row":0,"col":2,"dir":"H"}],"rows":7,"cols":6,"area":42}},{"pool":"WANDEL","letters":["W","A","N","D","E","L"],"grid":{"words":[{"word":"WAND","row":2,"col":0,"dir":"H"},{"word":"WANDEL","row":2,"col":0,"dir":"V"},{"word":"LADE","row":0,"col":3,"dir":"V"},{"word":"WAL","row":0,"col":1,"dir":"H"},{"word":"DAL","row":5,"col":0,"dir":"H"},{"word":"LAND","row":7,"col":0,"dir":"H"}],"rows":8,"cols":4,"area":32}},{"pool":"KAMPEN","letters":["K","A","M","P","E","N"],"grid":{"words":[{"word":"KAM","row":2,"col":3,"dir":"H"},{"word":"PAK","row":0,"col":3,"dir":"V"},{"word":"MAN","row":2,"col":5,"dir":"V"},{"word":"KAMP","row":0,"col":0,"dir":"H"},{"word":"KAMPEN","row":4,"col":0,"dir":"H"}],"rows":5,"cols":6,"area":30}},{"pool":"WINTER","letters":["W","I","N","T","E","R"],"grid":{"words":[{"word":"TIEN","row":1,"col":1,"dir":"H"},{"word":"WINTER","row":0,"col":2,"dir":"V"},{"word":"RIT","row":3,"col":0,"dir":"H"},{"word":"TREIN","row":2,"col":0,"dir":"V"},{"word":"NIET","row":1,"col":4,"dir":"V"}],"rows":7,"cols":5,"area":35}},{"pool":"TALENT","letters":["T","A","L","E","N","T"],"grid":{"words":[{"word":"LAT","row":0,"col":2,"dir":"H"},{"word":"LATEN","row":0,"col":2,"dir":"V"},{"word":"TALENT","row":0,"col":4,"dir":"V"},{"word":"NET","row":2,"col":0,"dir":"H"},{"word":"TENT","row":0,"col":0,"dir":"V"}],"rows":6,"cols":5,"area":30}},{"pool":"ZOMERS","letters":["Z","O","M","E","R","S"],"grid":{"words":[{"word":"MOS","row":4,"col":0,"dir":"H"},{"word":"ZOMERS","row":2,"col":0,"dir":"V"},{"word":"ZOEM","row":2,"col":0,"dir":"H"},{"word":"ROEM","row":6,"col":0,"dir":"H"},{"word":"SOM","row":0,"col":3,"dir":"V"}],"rows":8,"cols":4,"area":32}},{"pool":"DOKTER","letters":["D","O","K","T","E","R"],"grid":{"words":[{"word":"ORDE","row":3,"col":0,"dir":"H"},{"word":"DOKTER","row":2,"col":0,"dir":"V"},{"word":"TREK","row":5,"col":0,"dir":"H"},{"word":"KORT","row":5,"col":3,"dir":"V"},{"word":"RODE","row":0,"col":3,"dir":"V"}],"rows":9,"cols":4,"area":36}},{"pool":"STRALEN","letters":["S","T","R","A","L","E","N"],"grid":{"words":[{"word":"STER","row":2,"col":0,"dir":"H"},{"word":"LAT","row":0,"col":1,"dir":"V"},{"word":"STAL","row":2,"col":0,"dir":"V"},{"word":"STRALEN","row":0,"col":3,"dir":"V"},{"word":"LATEN","row":5,"col":0,"dir":"H"}],"rows":7,"cols":5,"area":35}}];
+
+// ---------- state / persistence ----------
+const SAVE_KEY = "zenwoord_v1";
+let state = load();
+function load(){
+  try{ const s=JSON.parse(localStorage.getItem(SAVE_KEY)); if(s&&typeof s.current==="number") return s; }catch(e){}
+  return { current:0, unlocked:0, done:[], hints:{} };
+}
+function save(){ try{ localStorage.setItem(SAVE_KEY, JSON.stringify(state)); }catch(e){} }
+
+// ---------- runtime level data ----------
+let level, cells, wordList, found, order;
+
+function buildLevel(idx){
+  level = idx;
+  const p = PUZZLES[idx];
+  cells = {}; // "r,c" -> {letter, revealed, el}
+  wordList = p.grid.words.map(w=>{
+    const dr=w.dir==="V"?1:0, dc=w.dir==="H"?1:0, keys=[];
+    for(let i=0;i<w.word.length;i++){
+      const r=w.row+dr*i, c=w.col+dc*i, k=r+","+c;
+      keys.push(k);
+      if(!cells[k]) cells[k]={letter:w.word[i], revealed:false};
+    }
+    return { word:w.word, keys, done:false };
+  });
+  found = new Set(state.done.includes(idx) ? wordList.map(w=>w.word) : []);
+  // if level already completed previously, reveal all
+  renderGrid(p);
+  order = shuffled(p.letters);
+  renderWheel();
+  updateProgress();
+  // reveal any pre-found (completed) words
+  wordList.forEach(w=>{ if(found.has(w.word)) revealWord(w,true); });
+}
+
+function shuffled(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+// ---------- grid ----------
+const gridEl = document.getElementById("grid");
+function renderGrid(p){
+  gridEl.innerHTML="";
+  const R=p.grid.rows, C=p.grid.cols;
+  // cell size to fit width
+  const wrap=document.getElementById("gridWrap");
+  const maxW=Math.min(wrap.clientWidth||360, 480)-4;
+  const size=Math.max(26, Math.min(46, Math.floor((maxW-(C-1)*5)/C)));
+  gridEl.style.gridTemplateColumns=`repeat(${C}, ${size}px)`;
+  const fs=Math.round(size*0.5);
+  for(let r=0;r<R;r++)for(let c=0;c<C;c++){
+    const k=r+","+c, d=document.createElement("div");
+    d.className="cell"; d.style.width=size+"px"; d.style.height=size+"px"; d.style.fontSize=fs+"px";
+    if(cells[k]){ d.classList.add("hidden-letter"); d.textContent=cells[k].letter; cells[k].el=d; }
+    else d.classList.add("empty");
+    gridEl.appendChild(d);
+  }
+}
+function revealWord(w, silent){
+  w.done=true; found.add(w.word);
+  w.keys.forEach(k=>{ const c=cells[k]; if(c&&!c.revealed){ c.revealed=true; c.el.classList.remove("hidden-letter");
+    if(!silent){ c.el.classList.remove("reveal"); void c.el.offsetWidth; c.el.classList.add("reveal"); } } });
+}
+
+// ---------- wheel ----------
+const wheelWrap=document.getElementById("wheelWrap");
+const svg=document.getElementById("wheelSvg");
+let letterEls=[];
+function renderWheel(){
+  wheelWrap.querySelectorAll(".letter").forEach(e=>e.remove());
+  letterEls=[];
+  const n=order.length, R=wheelWrap.clientWidth/2, cx=R, cy=R, rad=R-34;
+  order.forEach((ch,i)=>{
+    const ang=(-Math.PI/2)+(i*2*Math.PI/n);
+    const x= n===1?cx : cx+rad*Math.cos(ang);
+    const y= n===1?cy : cy+rad*Math.sin(ang);
+    const el=document.createElement("div");
+    el.className="letter"; el.textContent=ch; el.style.left=x+"px"; el.style.top=y+"px";
+    el.dataset.i=i; el._x=x; el._y=y;
+    wheelWrap.appendChild(el); letterEls.push(el);
+  });
+  drawLine();
+}
+
+// ---------- selection ----------
+let selecting=false, sel=[]; // array of letter indices
+const curEl=document.getElementById("currentInner");
+
+function pointFromEvent(e){
+  const r=wheelWrap.getBoundingClientRect();
+  const t=e.touches?e.touches[0]:e;
+  return { x:t.clientX-r.left, y:t.clientY-r.top };
+}
+function nearestLetter(pt){
+  let best=-1, bd=1e9;
+  letterEls.forEach((el,i)=>{ const dx=pt.x-el._x, dy=pt.y-el._y, d=dx*dx+dy*dy; if(d<bd){bd=d;best=i;} });
+  return bd<= (34*34) ? best : -1;
+}
+function startSel(e){
+  if(document.querySelector(".overlay.show")) return;
+  e.preventDefault(); selecting=true; sel=[];
+  addAt(pointFromEvent(e));
+}
+function moveSel(e){
+  if(!selecting) return; e.preventDefault();
+  addAt(pointFromEvent(e), true);
+}
+function addAt(pt, allowBacktrack){
+  const i=nearestLetter(pt);
+  if(i<0) { drawLine(pt); return; }
+  if(sel.length && sel[sel.length-1]===i){ drawLine(pt); return; }
+  if(allowBacktrack && sel.length>=2 && sel[sel.length-2]===i){ // backtrack
+    letterEls[sel[sel.length-1]].classList.remove("sel"); sel.pop(); updateCurrent(); drawLine(pt); return;
+  }
+  if(sel.includes(i)){ drawLine(pt); return; }
+  sel.push(i); letterEls[i].classList.add("sel"); updateCurrent(); drawLine(pt);
+}
+function endSel(){
+  if(!selecting) return; selecting=false;
+  const word=sel.map(i=>order[i]).join("");
+  evaluate(word);
+  sel.forEach(i=>letterEls[i].classList.remove("sel")); sel=[]; drawLine();
+}
+function updateCurrent(){
+  const w=sel.map(i=>order[i]).join("");
+  curEl.textContent=w; curEl.className=w?"show":"";
+}
+function drawLine(extra){
+  if(!sel.length){ svg.innerHTML=""; return; }
+  const pts=sel.map(i=>`${letterEls[i]._x},${letterEls[i]._y}`);
+  let path=`<polyline points="${pts.join(" ")}" fill="none" stroke="#3f6f6a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>`;
+  if(extra) path+=`<line x1="${letterEls[sel[sel.length-1]]._x}" y1="${letterEls[sel[sel.length-1]]._y}" x2="${extra.x}" y2="${extra.y}" stroke="#3f6f6a" stroke-width="6" stroke-linecap="round" opacity="0.3"/>`;
+  const dots=sel.map(i=>`<circle cx="${letterEls[i]._x}" cy="${letterEls[i]._y}" r="7" fill="#3f6f6a" opacity="0.55"/>`).join("");
+  svg.innerHTML=path+dots;
+}
+
+function evaluate(word){
+  if(word.length<2){ curEl.className=""; return; }
+  const w=wordList.find(x=>x.word===word && !x.done);
+  if(w){
+    revealWord(w);
+    flash("good", word);
+    save();
+    checkComplete();
+  } else if(wordList.some(x=>x.word===word)){
+    flash("good", word); // already found
+    setTimeout(()=>{curEl.className="";},450);
+  } else {
+    flash("bad", word);
+    setTimeout(()=>{curEl.className="";},450);
+  }
+}
+function flash(kind, word){
+  curEl.textContent=word; curEl.className="show "+kind;
+  if(kind==="bad"){ curEl.animate([{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"translateX(0)"}],{duration:260}); }
+  if(kind!=="bad") setTimeout(()=>{ if(!selecting){curEl.className="";} },500);
+}
+
+function updateProgress(){
+  const total=wordList.length, f=wordList.filter(w=>w.done).length;
+  document.getElementById("progressPill").textContent=`Lvl ${level+1} · ${f}/${total}`;
+  document.getElementById("hintCount").textContent=state.hints[level]||0;
+}
+
+function checkComplete(){
+  updateProgress();
+  if(wordList.every(w=>w.done)){
+    if(!state.done.includes(level)){ state.done.push(level); }
+    state.unlocked=Math.max(state.unlocked, Math.min(level+1, PUZZLES.length-1));
+    save();
+    setTimeout(showWin, 550);
+  }
+}
+
+// ---------- hint ----------
+document.getElementById("hintBtn").onclick=()=>{
+  const candidates=wordList.filter(w=>!w.done);
+  if(!candidates.length) return;
+  candidates.sort((a,b)=>a.word.length-b.word.length);
+  // reveal one still-hidden cell of the shortest unfinished word
+  for(const w of candidates){
+    const hk=w.keys.find(k=>!cells[k].revealed);
+    if(hk){ const c=cells[hk]; c.revealed=true; c.el.classList.remove("hidden-letter");
+      c.el.classList.add("reveal","hintflash");
+      state.hints[level]=(state.hints[level]||0)+1;
+      // if that completed the word:
+      if(w.keys.every(k=>cells[k].revealed)){ w.done=true; found.add(w.word); }
+      save(); updateProgress(); checkComplete();
+      toast("Een letter onthuld");
+      return;
+    }
+  }
+};
+document.getElementById("shuffleBtn").onclick=()=>{ order=shuffled(order); sel=[]; renderWheel(); updateCurrent(); };
+
+// ---------- overlays ----------
+const winOv=document.getElementById("winOverlay"), menuOv=document.getElementById("menuOverlay");
+function showWin(){
+  const last=level>=PUZZLES.length-1;
+  document.getElementById("winTitle").textContent= last?"Alles voltooid! 🌸":"Level voltooid!";
+  document.getElementById("winSub").textContent= last?"Je hebt alle levels uitgespeeld. Wat een rust.":"Rustig aan naar de volgende.";
+  document.getElementById("nextBtn").style.display= last?"none":"block";
+  winOv.classList.add("show");
+}
+document.getElementById("nextBtn").onclick=()=>{ winOv.classList.remove("show"); goLevel(Math.min(level+1,PUZZLES.length-1)); };
+document.getElementById("winMenuBtn").onclick=()=>{ winOv.classList.remove("show"); openMenu(); };
+document.getElementById("menuBtn").onclick=openMenu;
+document.getElementById("menuCloseBtn").onclick=()=>menuOv.classList.remove("show");
+function openMenu(){
+  const g=document.getElementById("levelGrid"); g.innerHTML="";
+  PUZZLES.forEach((p,i)=>{
+    const d=document.createElement("div"); d.className="lvl";
+    const done=state.done.includes(i), unlocked=i<=state.unlocked || done;
+    if(done)d.classList.add("done"); if(!unlocked)d.classList.add("locked"); if(i===level)d.classList.add("cur");
+    d.textContent= unlocked? (i+1) : "🔒";
+    if(unlocked) d.onclick=()=>{ menuOv.classList.remove("show"); goLevel(i); };
+    g.appendChild(d);
+  });
+  menuOv.classList.add("show");
+}
+
+function goLevel(i){ state.current=i; save(); buildLevel(i); }
+
+function toast(msg){ const t=document.getElementById("toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("show"),1400); }
+
+// ---------- events ----------
+wheelWrap.addEventListener("mousedown",startSel);
+window.addEventListener("mousemove",moveSel);
+window.addEventListener("mouseup",endSel);
+wheelWrap.addEventListener("touchstart",startSel,{passive:false});
+wheelWrap.addEventListener("touchmove",moveSel,{passive:false});
+window.addEventListener("touchend",endSel);
+window.addEventListener("resize",()=>{ renderGrid(PUZZLES[level]); wordList.forEach(w=>{ if(w.done)revealWord(w,true);}); renderWheel(); });
+
+// ---------- start ----------
+goLevel(Math.min(state.current, PUZZLES.length-1));
+</script>
+</body>
+</html>

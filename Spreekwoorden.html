@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#241a10">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Spreekwoorden">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAAI5ElEQVR4nO3aMU6sVRyH4cFcG2NBZUFN7+2MO7ChYCOWLsDO0tK4CAqsLaxuSe4WLN2EBQkgF4aBC3Oc//s8G5gvOTO/N+fLHJ2eHG8A6Pli9QMAsIYAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAEDUu9UPcKiuLs5WPwJw6/355epHODxHpyfHq5/hYBh9OAhisCMBeJrdhwOlBNsJwKPsPoyhBA8SgAeYfhhJBu4RgP8w/TCeDNzwN9Bb1h8K/NJvuAFsNr4QkOQq4AZg/SHKb78eAN8AKIsvQPcVUPzggbuar4OiNwDrD9zV3IRiAJonDWwXXIZcAIJnDOyotg+5AABwrRWAWt6B50qtRCgAqXMFXqyzFZUAdE4U+HyRxagEAIB7EgGIxBx4RYXdmB+AwikCb2H8eswPAAAPGh6A8QEH3tTsDRkeAAAeMzkAs9MN7MfgJZkcAAC2EACAqLEBGHxrA/Zs6p6MDQAA2wkAQNTMAEy9rwGrjFyVmQEA4EkCABAlAABRAwMw8lUdsNy8bRkYAAB2IQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFHvVj8Ac/z4y4cPH/9Z8tFff/Xln7//sJ/P+uOvv3/+7Wo/n/WpX3/67vtvv1n16QzjBgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQdXR6crz6GV7Z1cXZ6kcAZnp/frn6EV6TGwBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQNTAALw/v1z9CMBA87ZlYAAA2IUAAEQJAEDUzADMe1UHrDVyVWYGAIAnCQBA1NgAjLyvAUtM3ZOxAQBgOwEAiJocgKm3NmCfBi/J5AAAsMXwAAxON7AHszdkeAAAeMz8AMwOOPB2xq/H/ABsAqcIvLrCbiQCAMCnKgEoxBx4LZHFqARgkzlR4DN1tiIUgE3pXIGXSa1EKwAA3MgFIJV34Flq+5ALwKZ3xsAugstQDMAmedLAFs1NODo9OV79DCtdXZytfgRgpeb0X4veAG6Uzx6IL0A9AJv8NwCy/Pbrr4Du8joIIkz/NTeAW74TUOCXfsMN4AGuAjCS6b9HAB4lAzCG6X+QADxNCeBA2f3tBOAZlAAOgt3fkQC8kBjA/4rRfwEBAIjyN1CAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiPoXjyelIheWW1MAAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAAI5ElEQVR4nO3aMU6sVRyH4cFcG2NBZUFN7+2MO7ChYCOWLsDO0tK4CAqsLaxuSe4WLN2EBQkgF4aBC3Oc//s8G5gvOTO/N+fLHJ2eHG8A6Pli9QMAsIYAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAEDUu9UPcKiuLs5WPwJw6/355epHODxHpyfHq5/hYBh9OAhisCMBeJrdhwOlBNsJwKPsPoyhBA8SgAeYfhhJBu4RgP8w/TCeDNzwN9Bb1h8K/NJvuAFsNr4QkOQq4AZg/SHKb78eAN8AKIsvQPcVUPzggbuar4OiNwDrD9zV3IRiAJonDWwXXIZcAIJnDOyotg+5AABwrRWAWt6B50qtRCgAqXMFXqyzFZUAdE4U+HyRxagEAIB7EgGIxBx4RYXdmB+AwikCb2H8eswPAAAPGh6A8QEH3tTsDRkeAAAeMzkAs9MN7MfgJZkcAAC2EACAqLEBGHxrA/Zs6p6MDQAA2wkAQNTMAEy9rwGrjFyVmQEA4EkCABAlAABRAwMw8lUdsNy8bRkYAAB2IQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFHvVj8Ac/z4y4cPH/9Z8tFff/Xln7//sJ/P+uOvv3/+7Wo/n/WpX3/67vtvv1n16QzjBgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQdXR6crz6GV7Z1cXZ6kcAZnp/frn6EV6TGwBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQNTAALw/v1z9CMBA87ZlYAAA2IUAAEQJAEDUzADMe1UHrDVyVWYGAIAnCQBA1NgAjLyvAUtM3ZOxAQBgOwEAiJocgKm3NmCfBi/J5AAAsMXwAAxON7AHszdkeAAAeMz8AMwOOPB2xq/H/ABsAqcIvLrCbiQCAMCnKgEoxBx4LZHFqARgkzlR4DN1tiIUgE3pXIGXSa1EKwAA3MgFIJV34Flq+5ALwKZ3xsAugstQDMAmedLAFs1NODo9OV79DCtdXZytfgRgpeb0X4veAG6Uzx6IL0A9AJv8NwCy/Pbrr4Du8joIIkz/NTeAW74TUOCXfsMN4AGuAjCS6b9HAB4lAzCG6X+QADxNCeBA2f3tBOAZlAAOgt3fkQC8kBjA/4rRfwEBAIjyN1CAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiBIAgCgBAIgSAIAoAQCIEgCAKAEAiPoXjyelIheWW1MAAAAASUVORK5CYII=">
+<title>SPREEKWOORDEN</title>
+<style>
+  :root{
+    --bg:#241a10; --bg2:#1a1209; --panel:#362a17; --text:#eef4fb; --muted:#93a3b8;
+    --accent:#f4c95d; --accentText:#2a2410; --good:#3fbf7f; --bad:#e15b5b; --border:#52432a;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; height:100%;}
+  body{
+    background:linear-gradient(180deg,var(--bg),var(--bg2)); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; flex-direction:column; align-items:center;
+    padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+    height:100dvh; overflow:hidden; user-select:none; -webkit-user-select:none;
+  }
+  header{width:100%; max-width:520px; text-align:center; padding:12px 0 6px;}
+  header h1{margin:0; font-size:22px; letter-spacing:1px; font-weight:800;}
+  .topbar{display:flex; justify-content:space-between; width:100%; max-width:520px;
+    font-size:13px; color:var(--muted); margin-bottom:8px;}
+  .topbar b{color:var(--text);}
+  #progress{width:100%; max-width:520px; height:8px; background:var(--panel);
+    border-radius:5px; overflow:hidden; margin-bottom:16px;}
+  #progbar{height:100%; width:0%; background:var(--accent); transition:width .3s;}
+  .stage{width:100%; max-width:520px; flex:1; display:flex; flex-direction:column; overflow-y:auto;}
+  .question{font-size:21px; font-weight:700; line-height:1.4; text-align:center; margin:8px 0 22px;}
+  .answers{display:flex; flex-direction:column; gap:11px;}
+  .answers.two{flex-direction:row;}
+  .answers.two .ans{flex:1; text-align:center; font-size:18px; padding:22px 8px;}
+  .ans{
+    background:var(--panel); border:2px solid var(--border); color:var(--text);
+    border-radius:12px; padding:16px; font-size:17px; font-weight:600; text-align:left;
+    cursor:pointer; transition:transform .06s, background .15s;
+  }
+  .ans:active{transform:scale(.99);}
+  .ans.correct{background:var(--good); border-color:var(--good); color:#fff;}
+  .ans.wrong{background:var(--bad); border-color:var(--bad); color:#fff;}
+  .ans.dim{opacity:.45;}
+  .ans:disabled{cursor:default;}
+  .expl{margin-top:16px; background:var(--panel); border-left:3px solid var(--accent);
+    border-radius:8px; padding:12px 14px; font-size:15px; color:var(--muted); line-height:1.45;}
+  .expl.hidden{display:none;}
+  .footer{width:100%; max-width:520px; padding:10px 0 6px; min-height:64px;}
+  .btn{width:100%; padding:15px; border:none; border-radius:12px; font-size:17px;
+    font-weight:700; cursor:pointer; background:var(--accent); color:var(--accentText);}
+  .btn:active{filter:brightness(1.1);}
+  .center{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:10px;}
+  .bigscore{font-size:46px; font-weight:800; color:var(--accent);}
+  .rating{font-size:20px; font-weight:700;}
+  .sub{color:var(--muted); font-size:15px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+<header><h1>SPREEKWOORDEN</h1></header>
+<div class="topbar">
+  <span id="qnum">Vraag 1/10</span>
+  <span>Score: <b id="score">0</b></span>
+  <span>Beste: <b id="best">0</b></span>
+</div>
+<div id="progress"><div id="progbar"></div></div>
+
+<div class="stage" id="quizscreen">
+  <div class="question" id="question"></div>
+  <div class="answers" id="answers"></div>
+  <div class="expl hidden" id="expl"></div>
+</div>
+<div class="footer">
+  <button class="btn hidden" id="next">Volgende</button>
+</div>
+
+<div class="stage hidden" id="endscreen">
+  <div class="center">
+    <div class="sub">Je score</div>
+    <div class="bigscore" id="endscore">0/10</div>
+    <div class="rating" id="endrating"></div>
+    <div class="sub" id="endsub"></div>
+    <button class="btn" id="restart" style="max-width:280px;margin-top:16px;">Nieuwe ronde</button>
+  </div>
+</div>
+
+<script>
+const ALL = [{"q": "Wie a zegt, moet ook … zeggen.", "a": "b", "opts": ["b", "c", "z", "ja"], "expl": "'Wie a zegt, moet ook b zeggen': je moet iets afmaken wat je begint."}, {"q": "De appel valt niet ver van de ….", "a": "boom", "opts": ["boom", "tak", "grond", "wortel"], "expl": "Kinderen lijken vaak op hun ouders."}, {"q": "Beter een vogel in de hand dan tien in de ….", "a": "lucht", "opts": ["lucht", "boom", "struik", "hemel"], "expl": "Iets kleins dat zeker is, is beter dan veel dat onzeker is."}, {"q": "Wie het laatst lacht, lacht het ….", "a": "best", "opts": ["best", "hardst", "langst", "luidst"], "expl": "De uiteindelijke winnaar heeft het meeste plezier."}, {"q": "Nieuwe bezems … schoon.", "a": "vegen", "opts": ["vegen", "maken", "poetsen", "ruimen"], "expl": "Nieuwe mensen pakken dingen vaak fanatiek aan."}, {"q": "Hoge bomen vangen veel ….", "a": "wind", "opts": ["wind", "regen", "licht", "vogels"], "expl": "Wie opvalt, krijgt veel kritiek te verduren."}, {"q": "Als de kat van huis is, dansen de ….", "a": "muizen", "opts": ["muizen", "honden", "ratten", "vogels"], "expl": "Zonder toezicht doen mensen waar ze zin in hebben."}, {"q": "Een gegeven paard moet je niet in de … kijken.", "a": "bek", "opts": ["bek", "ogen", "mond", "staart"], "expl": "Op een cadeau moet je geen kritiek hebben."}, {"q": "Oost west, … best.", "a": "thuis", "opts": ["thuis", "rust", "eigen", "west"], "expl": "Nergens is het zo fijn als thuis."}, {"q": "Wie zijn billen brandt, moet op de blaren ….", "a": "zitten", "opts": ["zitten", "liggen", "letten", "wachten"], "expl": "Je moet de gevolgen van je eigen fouten dragen."}, {"q": "De aanhouder ….", "a": "wint", "opts": ["wint", "verliest", "wacht", "zwijgt"], "expl": "Wie volhoudt, bereikt uiteindelijk zijn doel."}, {"q": "Waar rook is, is ….", "a": "vuur", "opts": ["vuur", "gevaar", "warmte", "as"], "expl": "Achter geruchten zit meestal een kern van waarheid."}, {"q": "Beter laat dan ….", "a": "nooit", "opts": ["nooit", "vroeg", "later", "snel"], "expl": "Iets te laat doen is nog altijd beter dan het niet doen."}, {"q": "Eerst zien, dan ….", "a": "geloven", "opts": ["geloven", "doen", "denken", "weten"], "expl": "Pas als je bewijs hebt, geloof je iets."}, {"q": "Onbekend maakt ….", "a": "onbemind", "opts": ["onbemind", "onbeleefd", "ongewild", "onbekwaam"], "expl": "Wat je niet kent, waardeer je vaak niet."}, {"q": "Al doende leert ….", "a": "men", "opts": ["men", "je", "hij", "iedereen"], "expl": "Door iets te doen, leer je het vanzelf."}, {"q": "Voorkomen is beter dan ….", "a": "genezen", "opts": ["genezen", "genezing", "herstellen", "wachten"], "expl": "Problemen vermijden is beter dan ze achteraf oplossen."}, {"q": "Wie het kleine niet eert, is het grote niet ….", "a": "waard", "opts": ["waard", "waardig", "wijs", "waar"], "expl": "Wie kleine dingen niet waardeert, verdient geen grote."}, {"q": "Vele handen maken … werk.", "a": "licht", "opts": ["licht", "snel", "zwaar", "veel"], "expl": "Samen krijg je een klus veel makkelijker geklaard."}, {"q": "Stille wateren hebben diepe ….", "a": "gronden", "opts": ["gronden", "bodems", "stromen", "kanten"], "expl": "Rustige mensen hebben vaak verrassend veel in hun mars."}, {"q": "Bezint eer ge ….", "a": "begint", "opts": ["begint", "eindigt", "zwijgt", "wint"], "expl": "Denk goed na voordat je aan iets begint."}, {"q": "Beter een half ei dan een lege ….", "a": "dop", "opts": ["dop", "doos", "maag", "hand"], "expl": "Iets kleins is beter dan helemaal niets."}, {"q": "Zachte heelmeesters maken stinkende ….", "a": "wonden", "opts": ["wonden", "zweren", "zaken", "geuren"], "expl": "Te voorzichtig optreden maakt problemen alleen maar erger."}, {"q": "De kruik gaat zo lang te water tot zij ….", "a": "barst", "opts": ["barst", "breekt", "zinkt", "vult"], "expl": "Als je iets riskants blijft doen, gaat het ooit fout."}, {"q": "Wie het onderste uit de kan wil, krijgt het lid op de ….", "a": "neus", "opts": ["neus", "pot", "hand", "tafel"], "expl": "Wie te veel wil, komt bedrogen uit."}, {"q": "Geduld is een schone ….", "a": "zaak", "opts": ["zaak", "deugd", "gave", "kunst"], "expl": "Geduld hebben loont uiteindelijk."}, {"q": "Wie kaatst, moet de bal ….", "a": "verwachten", "opts": ["verwachten", "vangen", "gooien", "missen"], "expl": "Wie uitdeelt, moet ook tegenslag kunnen incasseren."}, {"q": "Als twee honden vechten om een been, loopt de derde ermee ….", "a": "heen", "opts": ["heen", "weg", "door", "mee"], "expl": "Terwijl twee ruziën, profiteert een ander ervan."}, {"q": "Wie goed doet, goed ….", "a": "ontmoet", "opts": ["ontmoet", "krijgt", "voelt", "leeft"], "expl": "Wie anderen goed behandelt, krijgt dat terug."}, {"q": "Twee handen op één ….", "a": "buik", "opts": ["buik", "hart", "doel", "weg"], "expl": "Twee mensen die het volledig met elkaar eens zijn."}];
+const STORE_KEY = "spreekwoorden_best";
+const ROUND = Math.min(10, ALL.length);
+let quiz=[], idx=0, score=0, answered=false;
+
+function getBest(){ try{return parseInt(localStorage.getItem(STORE_KEY))||0;}catch(e){return 0;} }
+function setBest(v){ try{localStorage.setItem(STORE_KEY,v);}catch(e){} }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+function startRound(){
+  quiz = shuffle(ALL).slice(0, ROUND).map(it=>{
+    const opts = it.opts.length>2 ? shuffle(it.opts) : it.opts.slice();
+    return {q:it.q, a:it.a, opts, expl:it.expl};
+  });
+  idx=0; score=0;
+  document.getElementById("endscreen").classList.add("hidden");
+  document.getElementById("quizscreen").classList.remove("hidden");
+  document.getElementById("best").textContent = getBest();
+  showQuestion();
+}
+
+function showQuestion(){
+  answered=false;
+  const item = quiz[idx];
+  document.getElementById("qnum").textContent = "Vraag "+(idx+1)+"/"+ROUND;
+  document.getElementById("score").textContent = score;
+  document.getElementById("progbar").style.width = (idx/ROUND*100)+"%";
+  document.getElementById("question").textContent = item.q;
+  const box = document.getElementById("answers");
+  box.className = "answers" + (item.opts.length===2 ? " two" : "");
+  box.innerHTML = "";
+  item.opts.forEach(opt=>{
+    const b=document.createElement("button");
+    b.className="ans"; b.textContent=opt;
+    b.addEventListener("click",()=>choose(b, opt, item));
+    box.appendChild(b);
+  });
+  const ex=document.getElementById("expl"); ex.classList.add("hidden"); ex.textContent="";
+  document.getElementById("next").classList.add("hidden");
+}
+
+function choose(btn, opt, item){
+  if(answered) return;
+  answered=true;
+  document.querySelectorAll(".ans").forEach(b=>{
+    b.disabled=true;
+    if(b.textContent===item.a) b.classList.add("correct");
+    else if(b===btn) b.classList.add("wrong");
+    else b.classList.add("dim");
+  });
+  if(opt===item.a){ score++; document.getElementById("score").textContent=score; }
+  const ex=document.getElementById("expl");
+  ex.textContent = item.expl; ex.classList.remove("hidden");
+  const nb=document.getElementById("next");
+  nb.textContent = (idx===ROUND-1) ? "Bekijk resultaat" : "Volgende";
+  nb.classList.remove("hidden");
+  nb.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+
+function next(){
+  if(!answered) return;
+  idx++;
+  if(idx>=ROUND){ endRound(); return; }
+  showQuestion();
+}
+
+function endRound(){
+  document.getElementById("progbar").style.width="100%";
+  document.getElementById("quizscreen").classList.add("hidden");
+  document.getElementById("next").classList.add("hidden");
+  document.getElementById("endscreen").classList.remove("hidden");
+  document.getElementById("qnum").textContent = "Klaar!";
+  document.getElementById("endscore").textContent = score+"/"+ROUND;
+  const pct = score/ROUND*100;
+  let r;
+  if(pct===100) r="🏆 Perfect!";
+  else if(pct>=80) r="⭐ Uitstekend";
+  else if(pct>=60) r="👍 Goed gedaan";
+  else if(pct>=40) r="🙂 Niet slecht";
+  else r="💪 Volgende keer beter";
+  document.getElementById("endrating").textContent = r;
+  const b=getBest();
+  if(score>b){ setBest(score); document.getElementById("endsub").textContent="Nieuw record! 🎉"; }
+  else { document.getElementById("endsub").textContent="Je beste score: "+b+"/"+ROUND; }
+  document.getElementById("best").textContent = getBest();
+}
+
+document.getElementById("next").addEventListener("click", next);
+document.getElementById("restart").addEventListener("click", startRound);
+startRound();
+</script>
+</body>
+</html>

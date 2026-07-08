@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0e1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Spelletjes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAALcUlEQVR4nO3ZPYplVRSA0dti3HRsYjsPzQTHIJiYOApDR2FiIjgGwUznISaOw6DgUZTVTdX7u+fub60BFAf2qf29896bt+/ebwD0fLL3AQDYhwAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQNSnex9gId/9/PXeR2D79Yc/9j7CbX3+1y97H4Htny+/3/sIS3jz9t37vc+wJ0t/ZWNiYOmvrByDbgCs/qM4dAas/qNoZiAXAHv/uA5UAnv/uFIlaP0IbPsf2lHGZ/sfWmp8lRfAUXYHL7HsUyC1O8YrPAUSLwDbf5g1B2r7D1MY6PwArLksuNBqYy0si6DxYx0egNXWBFe0znDHr4my2cOdHIB1FgQ3ssKIZy8IttEjHhuAFVYDd7DvoAevBh6bOuiZAbD9U/Ya99SlwLNGjntgAGz/oPsPfeQ64OPmDX1aAGz/rHuOft4i4IWGjX5aAAB4oVEB8PE/7j4XYNhnQF5r0gWYEwDbn+3212DSPz9nG3MN5gQAgFcRAICoIQHw/Q8nt7sMYx7+XG7GZRgSAABea0IAfPzniVtciRmf+LiiAVdiQgAAOIMAAEQJAEDU4QPgBwCedd2LMeDbXm7h6Bfj8AEA4DwCABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRhw/Arz/8sfcRWNF1L8Y/X35/xb/GGEe/GIcPAADnEQCAKAEAiJoQAD8D8MQtrsTRv+3l6gZciQkBAOAMQwLgEcDJ7S7DgE98XMuMyzAkAAC8lgAARM0JgG+B2G5/DWY8/LnQmGswJwCbBuTd5wKM+efnPJMuwKgAAPBy0wLgEZB1z9FP+gzIqwwb/bQAbBqQdP+hD1sEvMS8oQ8MwKYBMXuNe9464CNGjntmADYNyNh30COXAv83ddBjA7DtvRq4gxVGPHU1cDJ4xJMDsK2xILiRdYY7eEEwe7jDA7CttCa4otXGOntNZI0f6/wAbOstCy605kDHL4uawkDfvH33fu8z3M93P3+99xG4yJqr/4nP//pl7yNwkcLqf5B4AZwcYn3wIUcZX2d9jJQaX+sF8JjXwFEcZe8/y2vgKFJ7/6QbgAcysLJDr/7HZGBlzdX/oB6Ax8RgBWOW/oeIwQrKS/8xAQCIav0IDMCJAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAER9uvcBFvLv71/tfQS2z775c+8j3NZvP/699xHYvv3pi72PsIQ3b9+93/sMe7L0VzYmBpb+ysox6AbA6j+KQ2fA6j+KZgZyAbD3j+tAJbD3jytVgtaPwLb/oR1lfLb/oaXGV3kBHGV38BLLPgVSu2O8wlMg8QKw/YdZc6C2/zCFgc4PwJrLggutNtbCsggaP9bhAVhtTXBF6wx3/Joomz3cyQFYZ0FwIyuMePaCYBs94rEBWGE1cAf7DnrwauCxqYOeGQDbP2WvcU9dCjxr5LgHBsD2D7r/0EeuAz5u3tCnBcD2z7rn6OctAl5o2OinBQCAFxoVAB//4+5zAYZ9BuS1Jl2AOQGw/dlufw0m/fNztjHXYE4AAHgVAQCIGhIA3/9wcrvLMObhz+VmXIYhAQDgtSYEwMd/nrjFlZjxiY8rGnAlJgQAgDMIAECUAABEHT4AfgDgWde9GAO+7eUWjn4xDh8AAM4jAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQdfgAfPbNn3sfgRVd92J8+9MXV/xrjHH0i3H4AABwHgEAiBIAgKgJAfAzAE/c4koc/dterm7AlZgQAADOMCQAHgGc3O4yDPjEx7XMuAxDAgDAawkAQNScAPgWiO3212DGw58LjbkGcwKwaUDefS7AmH9+zjPpAowKAAAvNy0AHgFZ9xz9pM+AvMqw0U8LwKYBSfcf+rBFwEvMG/rAAGwaELPXuOetAz5i5LhnBmDTgIx9Bz1yKfB/Uwc9NgDb3quBO1hhxFNXAyeDRzw5ANsaC4IbWWe4gxcEs4c7PADbSmuCK1ptrLPXRNb4sc4PwLbesuBCaw50/LKoKQz0zdt37/c+w/38+/tXex+Bi6y5+p/47ce/9z4CFyms/geJF8DJIdYHH3KU8XXWx0ip8bVeAI95DRzFUfb+s7wGjiK190+6AXggAys79Op/TAZW1lz9D+oBeEwMVjBm6X+IGKygvPQfEwCAqNaPwACcCABAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBA1H8l7MSbipPttAAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAALcUlEQVR4nO3ZPYplVRSA0dti3HRsYjsPzQTHIJiYOApDR2FiIjgGwUznISaOw6DgUZTVTdX7u+fub60BFAf2qf29896bt+/ebwD0fLL3AQDYhwAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQNSnex9gId/9/PXeR2D79Yc/9j7CbX3+1y97H4Htny+/3/sIS3jz9t37vc+wJ0t/ZWNiYOmvrByDbgCs/qM4dAas/qNoZiAXAHv/uA5UAnv/uFIlaP0IbPsf2lHGZ/sfWmp8lRfAUXYHL7HsUyC1O8YrPAUSLwDbf5g1B2r7D1MY6PwArLksuNBqYy0si6DxYx0egNXWBFe0znDHr4my2cOdHIB1FgQ3ssKIZy8IttEjHhuAFVYDd7DvoAevBh6bOuiZAbD9U/Ya99SlwLNGjntgAGz/oPsPfeQ64OPmDX1aAGz/rHuOft4i4IWGjX5aAAB4oVEB8PE/7j4XYNhnQF5r0gWYEwDbn+3212DSPz9nG3MN5gQAgFcRAICoIQHw/Q8nt7sMYx7+XG7GZRgSAABea0IAfPzniVtciRmf+LiiAVdiQgAAOIMAAEQJAEDU4QPgBwCedd2LMeDbXm7h6Bfj8AEA4DwCABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRhw/Arz/8sfcRWNF1L8Y/X35/xb/GGEe/GIcPAADnEQCAKAEAiJoQAD8D8MQtrsTRv+3l6gZciQkBAOAMQwLgEcDJ7S7DgE98XMuMyzAkAAC8lgAARM0JgG+B2G5/DWY8/LnQmGswJwCbBuTd5wKM+efnPJMuwKgAAPBy0wLgEZB1z9FP+gzIqwwb/bQAbBqQdP+hD1sEvMS8oQ8MwKYBMXuNe9464CNGjntmADYNyNh30COXAv83ddBjA7DtvRq4gxVGPHU1cDJ4xJMDsK2xILiRdYY7eEEwe7jDA7CttCa4otXGOntNZI0f6/wAbOstCy605kDHL4uawkDfvH33fu8z3M93P3+99xG4yJqr/4nP//pl7yNwkcLqf5B4AZwcYn3wIUcZX2d9jJQaX+sF8JjXwFEcZe8/y2vgKFJ7/6QbgAcysLJDr/7HZGBlzdX/oB6Ax8RgBWOW/oeIwQrKS/8xAQCIav0IDMCJAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAER9uvcBFvLv71/tfQS2z775c+8j3NZvP/699xHYvv3pi72PsIQ3b9+93/sMe7L0VzYmBpb+ysox6AbA6j+KQ2fA6j+KZgZyAbD3j+tAJbD3jytVgtaPwLb/oR1lfLb/oaXGV3kBHGV38BLLPgVSu2O8wlMg8QKw/YdZc6C2/zCFgc4PwJrLggutNtbCsggaP9bhAVhtTXBF6wx3/Joomz3cyQFYZ0FwIyuMePaCYBs94rEBWGE1cAf7DnrwauCxqYOeGQDbP2WvcU9dCjxr5LgHBsD2D7r/0EeuAz5u3tCnBcD2z7rn6OctAl5o2OinBQCAFxoVAB//4+5zAYZ9BuS1Jl2AOQGw/dlufw0m/fNztjHXYE4AAHgVAQCIGhIA3/9wcrvLMObhz+VmXIYhAQDgtSYEwMd/nrjFlZjxiY8rGnAlJgQAgDMIAECUAABEHT4AfgDgWde9GAO+7eUWjn4xDh8AAM4jAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQdfgAfPbNn3sfgRVd92J8+9MXV/xrjHH0i3H4AABwHgEAiBIAgKgJAfAzAE/c4koc/dterm7AlZgQAADOMCQAHgGc3O4yDPjEx7XMuAxDAgDAawkAQNScAPgWiO3212DGw58LjbkGcwKwaUDefS7AmH9+zjPpAowKAAAvNy0AHgFZ9xz9pM+AvMqw0U8LwKYBSfcf+rBFwEvMG/rAAGwaELPXuOetAz5i5LhnBmDTgIx9Bz1yKfB/Uwc9NgDb3quBO1hhxFNXAyeDRzw5ANsaC4IbWWe4gxcEs4c7PADbSmuCK1ptrLPXRNb4sc4PwLbesuBCaw50/LKoKQz0zdt37/c+w/38+/tXex+Bi6y5+p/47ce/9z4CFyms/geJF8DJIdYHH3KU8XXWx0ip8bVeAI95DRzFUfb+s7wGjiK190+6AXggAys79Op/TAZW1lz9D+oBeEwMVjBm6X+IGKygvPQfEwCAqNaPwACcCABAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBA1H8l7MSbipPttAAAAABJRU5ErkJggg==">
+<title>Spelletjes</title>
+<style>
+  :root{
+    --bg:#0e1020; --bg2:#090a14;
+    --text:#f2f5fc; --muted:#9aa2bd;
+    --card:#1a1d33; --cardline:#282d4a;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;}
+  body{
+    background:
+      radial-gradient(1100px 600px at 15% -8%, rgba(124,92,255,.18), transparent 60%),
+      radial-gradient(900px 500px at 110% 0%, rgba(45,212,191,.14), transparent 55%),
+      linear-gradient(180deg, var(--bg), var(--bg2));
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    min-height:100dvh;
+    padding:calc(env(safe-area-inset-top) + 26px) 18px calc(env(safe-area-inset-bottom) + 40px);
+    -webkit-user-select:none; user-select:none;
+  }
+  .wrap{max-width:640px; margin:0 auto;}
+  .hero{text-align:center; margin-bottom:26px;}
+  .hero .kicker{font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-weight:700;}
+  .hero h1{margin:6px 0 6px; font-size:34px; font-weight:800; letter-spacing:-.5px;}
+  .hero p{margin:0; color:var(--muted); font-size:15px;}
+
+  .section-title{display:flex; align-items:center; gap:10px; margin:24px 4px 12px; font-size:13px;
+    letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:700;}
+  .section-title::after{content:""; flex:1; height:1px; background:var(--cardline);}
+
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+
+  .card{
+    position:relative; display:flex; flex-direction:column; gap:8px;
+    background:var(--card); border:1px solid var(--cardline); border-radius:18px;
+    padding:16px 15px 15px; text-decoration:none; color:inherit; overflow:hidden;
+    transition:transform .12s ease, border-color .2s;
+  }
+  .card::before{content:""; position:absolute; inset:0 auto 0 0; width:5px; background:var(--c);}
+  .card:active{transform:scale(.975); border-color:var(--c);}
+  .card .ico{
+    width:48px; height:48px; border-radius:13px; display:flex; align-items:center; justify-content:center;
+    font-size:26px; background:color-mix(in srgb, var(--c) 22%, transparent); border:1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  }
+  .card h3{margin:2px 0 0; font-size:17px; font-weight:800; letter-spacing:-.2px;}
+  .card p{margin:0; font-size:12.5px; line-height:1.4; color:var(--muted);}
+  .tag{position:absolute; top:12px; right:12px; font-size:9.5px; font-weight:800; letter-spacing:.5px;
+    text-transform:uppercase; padding:3px 7px; border-radius:20px;}
+  .tag.off{background:rgba(63,191,127,.16); color:#5fd39a;}
+  .tag.on{background:rgba(255,140,66,.16); color:#ffab6e;}
+
+  footer{text-align:center; margin-top:30px; color:var(--muted); font-size:12px; line-height:1.6;}
+  @media(min-width:560px){ .hero h1{font-size:40px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">Tineke's</div>
+    <h1>Spelletjes</h1>
+    <p>Kies een spel en speel. De meeste werken gewoon offline.</p>
+  </div>
+
+  <div class="section-title">Woordspellen</div>
+  <div class="grid">
+    <a class="card" style="--c:#6aaa64" href="Woordje.html">
+      <span class="tag off">Offline</span>
+      <div class="ico">🟩</div>
+      <h3>Woordje</h3>
+      <p>Raad het woord van 5 letters in 6 pogingen.</p>
+    </a>
+    <a class="card" style="--c:#f4c95d" href="Woordkraker.html">
+      <span class="tag off">Offline</span>
+      <div class="ico">🔤</div>
+      <h3>Woordkraker</h3>
+      <p>Maak zoveel mogelijk woorden uit 7 letters.</p>
+    </a>
+    <a class="card" style="--c:#3f6f6a" href="zenwoord.html">
+      <span class="tag off">Offline</span>
+      <div class="ico">🧘</div>
+      <h3>Zenwoord</h3>
+      <p>Veeg letters aaneen en vul rustig het rooster.</p>
+    </a>
+    <a class="card" style="--c:#f0b64a" href="Spreekwoorden.html">
+      <span class="tag off">Offline</span>
+      <div class="ico">💬</div>
+      <h3>Spreekwoorden</h3>
+      <p>Vul het bekende spreekwoord juist aan.</p>
+    </a>
+    <a class="card" style="--c:#b58cff" href="WatHoortErNietBij.html">
+      <span class="tag off">Offline</span>
+      <div class="ico">🧩</div>
+      <h3>Wat hoort er niet bij?</h3>
+      <p>Tik de vreemde eend in de bijt eruit.</p>
+    </a>
+  </div>
+
+  <div class="section-title">Kennis &amp; quiz</div>
+  <div class="grid">
+    <a class="card" style="--c:#2dd4bf" href="Kennisquiz.html">
+      <span class="tag off">Offline</span>
+      <div class="ico">❓</div>
+      <h3>Kennisquiz</h3>
+      <p>Algemene kennis, 10 vragen per ronde.</p>
+    </a>
+    <a class="card" style="--c:#3fbf7f" href="WaarOfNietWaar.html">
+      <span class="tag off">Offline</span>
+      <div class="ico">✅</div>
+      <h3>Waar of niet waar</h3>
+      <p>Stellingen met directe uitleg.</p>
+    </a>
+  </div>
+
+  <div class="section-title">Meer spelletjes</div>
+  <div class="grid">
+    <a class="card" style="--c:#e05d5d" href="https://10tien10.github.io/blackstories/">
+      <span class="tag off">Offline</span>
+      <div class="ico">🕵️</div>
+      <h3>Black Stories</h3>
+      <p>Los het mysterie op met ja/nee-vragen.</p>
+    </a>
+    <a class="card" style="--c:#ff8c42" href="https://10tien10.github.io/30seconds-spel/">
+      <span class="tag off">Offline</span>
+      <div class="ico">⏱️</div>
+      <h3>30 Seconds</h3>
+      <p>Raad de woorden tegen de klok.</p>
+    </a>
+  </div>
+
+  <footer>
+    Alle spellen werken offline op je beginscherm.<br>
+    Open elk spel de eerste keer één keer mét internet, dan bewaart je iPad het.
+  </footer>
+</div>
+
+<script>
+  // Registreer de service worker zodat menu + offline-spellen bewaard blijven.
+  if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('sw.js').catch(function(){});
+    });
+  }
+</script>
+</body>
+</html>

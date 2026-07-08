@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#1a1226">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vreemde eend">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAAPDklEQVR4nO3czbHj5BZAUfcrIuhhB9AdAQNCIBCSIACSIBBCYEAEZPMGl2rM9bUtyfrfa82pujr6dLZkKD59+fz1AkDP/7b+AwDYhgAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBA1A9b/wEM9fuvf4/9R3757dsSfwk1zt5Zffry+evWfwMfmPDIDeGx5Clnr0MAdmShB+8eDyTfOXtNArC9lZ+9W57GLGcvTgA2s/mzd8vTGOHs8UYA1rbDZ++Wp/GUnD3eEYD1HOLxu+ZRPA1njw8JwBoO9/hd8ygemrPHAwKwrEM/ftc8iofj7PGUACzlNI/fNY/iITh7DOR/BbGIUz6Bl/Ne15mc9R6d9bq25QtgZpFj6nVsh5w9xvIFMKfIE3gpXelRdO5I50pX4AtgHtlD6XVsc84ek/kCmEH2Cby0r30PyvMvX/tcBOBVTqEJbMXkTeBFfgKazuF7xyf5apy9d5y9aXwBTOQJvGUm6zDnW2YyjQBM4bTdYzJLM+F7TGYCARjNOXvMfJZjto+Zz1gCMI4TNoQpLcFUhzClUQRgBGdrOLOal3kOZ1bDCcBQTtVYJjYXkxzLxAYSgEGcp2nM7XVmOI25DSEAzzlJrzC9V5jeK0zvKQF4whl6nRlOY26vM8PHBAAgSgAe8fowF5Mcy8TmYpIPCMBdzs28zHM4s5qXed4jAB9zYpZgqkOY0hJM9UMCABAlAB/wsrAcs33MfJZjtrcE4D2nZGkmfI/JLM2E3xEAgCgB+A8vCOsw51tmsg5zviYA/3Iy1mTa10xjTab9nQAARAnAP7wUrM/M35jD+sz8jQAARAnA5eJ1YDsmbwJbMfmLAABkCYAXgY2V51++9j0wfwEAiKoHwCvAHjTvQvOq9yZ+F+oBAMgSAICodADiX3+7UrsXtevds/K9SAcAoEwAAKK6ASh/9+1T5450rvQosnekGwCAOAEAiIoGIPvFt3OF+1K4xiNq3pdoAAAQAIAoAQCIKgag+WPfUZz77pz76o4ueHeKAQDgIgAAWQIAECUAAFECABCVC0DwX/Qfzlnv0Vmv60xq9ygXAADeCABAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQFQuAL/89m3rP4EnznqPznpdZ1K7R7kAAPBGAACiBAAgSgAAogQAIKoYgNq/6D+Wc9+dc1/d0QXvTjEAAFwEACBLAACiogEI/th3CIX7UrjGI2rel2gAABAAgKhuAJpffHvWuSOdKz2K7B3pBgAgTgAAotIByH737VDtXtSud8/K9yIdAIAyAQCIqgeg/PW3H8270LzqvYnfhXoAALIEoP4KsLny/MvXvgfmLwAAUQJwuXgR2I7Jm8BWTP4iAABZAvAPrwPrM/M35rA+M38jAABRAvAvLwVrMu1rprEm0/5OAP7DyViHOd8yk3WY8zUBAIgSgPe8ICzNhO8xmaWZ8DsC8AGnZDlm+5j5LMdsbwkAQJQAfMzLwhJMdQhTWoKpfkgA7nJi5mWew5nVvMzzHgF4xLmZi0mOZWJzMckHBAAgSgCe8PrwOjOcxtxeZ4aPCcBzztArTO8VpvcK03tKAAZxkqYxt9eZ4TTmNoQADOU8jWViczHJsUxsIAEYwakazqzmZZ7DmdVwAjCOszWEKS3BVIcwpVEEYDQn7DHzWY7ZPmY+YwnAFM7ZPSazNBO+x2QmEICJnLZbZrIOc75lJtN8+vL569Z/w7H9/uvfW/8J2/P4bcLZuzh7r/EF8CrnzwS2YvIm8CIBmEH5FJavfQ/K8y9f+1z8BDSn1Ce5x29XnD0m8AUwp8657FzpUXTuSOdKV+ALYBEnfh3z+O2cs8dwvgAWcdaTetbrOpOz3qOzXte2fAEs6zSvYx6/w3H2eEoA1nDoR9Hjd2jOHg8IwHoO9yh6/E7D2eNDArC2QzyKHr9TcvZ4RwA2s8On0bMX4ezxRgC2t/nT6NnLcvbiBGBHVn4aPXt85+w1CcBOLfRAevB4ytnrEIDDmPBYeuSYhbN3VgIAEOV/BQEQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFE/bP0HMNTvv/499h/55bdvS/wl1Pz5849j/5Gf/vhrib+EeX368vnr1n8DH5iw7oeQBJ6asO6HkIQdEoAdWWjp3yMGfLfQ0r9HDHZCALa38t6/pQRZK+/9W0qwLQHYzOZ7/5YSRGy+928pwSYEYG073Pu3lOCUdrj3bynBmgRgPYdY/ddk4DQOsfqvycA6BGANh1v912Tg0A63+q/JwNIEYFmHXv3XZOBwDr36r8nAcgRgKadZ/ddk4BBOs/qvycAS/K8gFnHK7X8573WdySm3/+W817UtXwAzi6xInwI7FFmRPgVm5AtgTpHtfyld6VFEtv+ldKUr8AUwj+xC9CmwuexC9CnwOl8AM8hu/0v72vcgu/0v7WufiwC8ygY0ga3YgCbwIj8BTWfxvePnoNVYfO/4OWgaXwAT2f63zGQdtv8tM5lGAKaw6e4xmaXZdPeYzAQCMJod95j5LMeOe8x8xhKAcWy3IUxpCbbbEKY0igCMYK8NZ1bzsteGM6vhBGAoG20sE5uLjTaWiQ0kAIPYZdOY2+vssmnMbQgBeM4We4XpvcIWe4XpPSUAT9hfrzPDaeyv15nhYwIAECUAj3h1nYtJjuXVdS4m+YAA3GVnzcs8h7Oz5mWe9wjAx2yrJZjqELbVEkz1QwIAECUAH/CiuhyzfcyL6nLM9pYAvGdDLc2E77GhlmbC7wgAQJQA/IeX03WY8y0vp+sw52sC8C9baU2mfc1WWpNpfycAAFEC8A8vpOsz8zdeSNdn5m8EACBKAC4Xr6LbMXmvolsx+YsAAGQJgJfQjZXn7yV0W+YvAABR9QCUXz/3o3kXvH7uQfwu1AMAkCUAAFHpADR/edin2r2I//KwK+V7kQ4AQJkAAER1A1D7zWH/Onek/JvDPmXvSDcAAHECABAVDUDn14ZjKdyX7K8NO9e8L9EAACAAAFECABBVDEDhh+bjOvfdaf7QfBTBu1MMAAAXAQDIEgCAKAEAiBIAgKhcAM79H5mcw1nvUfA/Mjmc2j3KBQCANwIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABCVC8Avv33b+k/gibPeo5/++GvrP4EnavcoFwAA3ggAQJQAAEQJAECUAABEFQNw1v/I5BzOfXdq/5HJsQTvTjEAAFwEACBLAACiogE49w/Nx1W4L8Efmg+heV+iAQBAAACiugEo/NpwLJ070vy1Yc+yd6QbAIA4AQCISgeg85vD/tXuRfY3hx0q34t0AADKBAAgqh6A2i8P+9S8C+VfHvYjfhfqAQDIEoDo6+d+lOcff/3cnPkLAECUAFwu7ZfQbZm8l9CtmPxFAACyBOAfXkXXZ+ZvvIquz8zfCABAlAD8ywvpmkz7mhfSNZn2dwLwH7bSOsz5lq20DnO+JgAAUQLwnpfTpZnwPV5Ol2bC7wjAB2yo5ZjtYzbUcsz2lgAARAnAx7yoLsFUh/CiugRT/ZAA3GVbzcs8h7Ot5mWe9wjAI3bWXExyLDtrLib5gAAARAnAE15dX2eG03h1fZ0ZPiYAz9lfrzC9V9hfrzC9pwRgEFtsGnN7nS02jbkNIQBD2WVjmdhc7LKxTGwgARjBRhvOrOZlow1nVsMJwDj22hCmtAR7bQhTGkUARrPdHjOf5dhuj5nPWAIwhR13j8kszY67x2QmEICJbLpbZrIOm+6WmUzz6cvnr1v/Dcf2+69/b/0nbM/q38SfP/+49Z+wPav/Fb4AXmX3mcBW7D4TeJEAzKC8AcvXvgflDVi+9rn4CWhOqZ+DrP5dSf0cZPXPxRfAnDo7sXOlR9HZiZ0rXYEvgEWc+FPA6t+5E38KWP2z8wWwiLNuybNe15mcdUue9bq25QtgWaf5FLD6D+c0nwJW/3IEYA2HzoDVf2iHzoDVvzQBWM/hMmD1n8bhMmD1r0MA1naIDFj9p3SIDFj9axKAzeywBPZ+xA5LYO9vQgC2t3kJ7P2szUtg729LAHZk5RLY+3y3cgns/Z0QgJ1aKAaWPk8tFANLf4cE4DAmJMG6ZxYTkmDdH4IAAET5X0EARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBAlAAARAkAQJQAAEQJAECUAABECQBA1P8BVHf4VUiO/hIAAAAASUVORK5CYII=">
+<title>WAT HOORT ER NIET BIJ?</title>
+<style>
+  :root{
+    --bg:#1a1226; --bg2:#120c1a; --panel:#2a1d3d; --text:#eef4fb; --muted:#93a3b8;
+    --accent:#b58cff; --accentText:#1a0f2e; --good:#3fbf7f; --bad:#e15b5b; --border:#40305a;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0; height:100%;}
+  body{
+    background:linear-gradient(180deg,var(--bg),var(--bg2)); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    display:flex; flex-direction:column; align-items:center;
+    padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+    height:100dvh; overflow:hidden; user-select:none; -webkit-user-select:none;
+  }
+  header{width:100%; max-width:520px; text-align:center; padding:12px 0 6px;}
+  header h1{margin:0; font-size:22px; letter-spacing:1px; font-weight:800;}
+  .topbar{display:flex; justify-content:space-between; width:100%; max-width:520px;
+    font-size:13px; color:var(--muted); margin-bottom:8px;}
+  .topbar b{color:var(--text);}
+  #progress{width:100%; max-width:520px; height:8px; background:var(--panel);
+    border-radius:5px; overflow:hidden; margin-bottom:16px;}
+  #progbar{height:100%; width:0%; background:var(--accent); transition:width .3s;}
+  .stage{width:100%; max-width:520px; flex:1; display:flex; flex-direction:column; overflow-y:auto;}
+  .question{font-size:21px; font-weight:700; line-height:1.4; text-align:center; margin:8px 0 22px;}
+  .answers{display:flex; flex-direction:column; gap:11px;}
+  .answers.two{flex-direction:row;}
+  .answers.two .ans{flex:1; text-align:center; font-size:18px; padding:22px 8px;}
+  .ans{
+    background:var(--panel); border:2px solid var(--border); color:var(--text);
+    border-radius:12px; padding:16px; font-size:17px; font-weight:600; text-align:left;
+    cursor:pointer; transition:transform .06s, background .15s;
+  }
+  .ans:active{transform:scale(.99);}
+  .ans.correct{background:var(--good); border-color:var(--good); color:#fff;}
+  .ans.wrong{background:var(--bad); border-color:var(--bad); color:#fff;}
+  .ans.dim{opacity:.45;}
+  .ans:disabled{cursor:default;}
+  .expl{margin-top:16px; background:var(--panel); border-left:3px solid var(--accent);
+    border-radius:8px; padding:12px 14px; font-size:15px; color:var(--muted); line-height:1.45;}
+  .expl.hidden{display:none;}
+  .footer{width:100%; max-width:520px; padding:10px 0 6px; min-height:64px;}
+  .btn{width:100%; padding:15px; border:none; border-radius:12px; font-size:17px;
+    font-weight:700; cursor:pointer; background:var(--accent); color:var(--accentText);}
+  .btn:active{filter:brightness(1.1);}
+  .center{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:10px;}
+  .bigscore{font-size:46px; font-weight:800; color:var(--accent);}
+  .rating{font-size:20px; font-weight:700;}
+  .sub{color:var(--muted); font-size:15px;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+<header><h1>WAT HOORT ER NIET BIJ?</h1></header>
+<div class="topbar">
+  <span id="qnum">Vraag 1/10</span>
+  <span>Score: <b id="score">0</b></span>
+  <span>Beste: <b id="best">0</b></span>
+</div>
+<div id="progress"><div id="progbar"></div></div>
+
+<div class="stage" id="quizscreen">
+  <div class="question" id="question"></div>
+  <div class="answers" id="answers"></div>
+  <div class="expl hidden" id="expl"></div>
+</div>
+<div class="footer">
+  <button class="btn hidden" id="next">Volgende</button>
+</div>
+
+<div class="stage hidden" id="endscreen">
+  <div class="center">
+    <div class="sub">Je score</div>
+    <div class="bigscore" id="endscore">0/10</div>
+    <div class="rating" id="endrating"></div>
+    <div class="sub" id="endsub"></div>
+    <button class="btn" id="restart" style="max-width:280px;margin-top:16px;">Nieuwe ronde</button>
+  </div>
+</div>
+
+<script>
+const ALL = [{"q": "Wat hoort er niet bij?", "a": "Wortel", "opts": ["Wortel", "Appel", "Banaan", "Peer"], "expl": "Wortel is een groente; de rest is fruit."}, {"q": "Wat hoort er niet bij?", "a": "Haai", "opts": ["Haai", "Hond", "Kat", "Cavia"], "expl": "Een haai is een vis; de rest zijn zoogdieren."}, {"q": "Wat hoort er niet bij?", "a": "Vierkant", "opts": ["Vierkant", "Rood", "Blauw", "Groen"], "expl": "Vierkant is een vorm; de rest zijn kleuren."}, {"q": "Wat hoort er niet bij?", "a": "Rotterdam", "opts": ["Rotterdam", "Amsterdam", "Parijs", "Berlijn"], "expl": "Rotterdam is geen hoofdstad; de rest wel."}, {"q": "Wat hoort er niet bij?", "a": "Juli", "opts": ["Juli", "Maandag", "Woensdag", "Vrijdag"], "expl": "Juli is een maand; de rest zijn weekdagen."}, {"q": "Wat hoort er niet bij?", "a": "Eik", "opts": ["Eik", "Roos", "Tulp", "Narcis"], "expl": "Een eik is een boom; de rest zijn bloemen."}, {"q": "Wat hoort er niet bij?", "a": "Penseel", "opts": ["Penseel", "Piano", "Gitaar", "Viool"], "expl": "Een penseel is geen muziekinstrument."}, {"q": "Wat hoort er niet bij?", "a": "Zeven", "opts": ["Zeven", "Twee", "Vier", "Acht"], "expl": "Zeven is oneven; de rest zijn even getallen."}, {"q": "Wat hoort er niet bij?", "a": "Maan", "opts": ["Maan", "Mercurius", "Venus", "Mars"], "expl": "De maan is geen planeet; de rest wel."}, {"q": "Wat hoort er niet bij?", "a": "Wolf", "opts": ["Wolf", "Leeuw", "Tijger", "Luipaard"], "expl": "Een wolf is geen katachtige; de rest wel."}, {"q": "Wat hoort er niet bij?", "a": "Schaken", "opts": ["Schaken", "Voetbal", "Tennis", "Hockey"], "expl": "Schaken is een bordspel; de rest zijn balsporten."}, {"q": "Wat hoort er niet bij?", "a": "Januari", "opts": ["Januari", "Winter", "Lente", "Zomer"], "expl": "Januari is een maand; de rest zijn seizoenen."}, {"q": "Wat hoort er niet bij?", "a": "Diamant", "opts": ["Diamant", "Goud", "Zilver", "Brons"], "expl": "Diamant is geen metaal; de rest wel."}, {"q": "Wat hoort er niet bij?", "a": "Pan", "opts": ["Pan", "Vork", "Mes", "Lepel"], "expl": "Een pan is geen bestek."}, {"q": "Wat hoort er niet bij?", "a": "Egypte", "opts": ["Egypte", "Spanje", "Italië", "Frankrijk"], "expl": "Egypte ligt niet in Europa; de rest wel."}, {"q": "Wat hoort er niet bij?", "a": "Wind", "opts": ["Wind", "Regen", "Sneeuw", "Hagel"], "expl": "Wind is geen neerslag; de rest wel."}, {"q": "Wat hoort er niet bij?", "a": "Spin", "opts": ["Spin", "Vlinder", "Bij", "Mier"], "expl": "Een spin is geen insect (acht poten)."}, {"q": "Wat hoort er niet bij?", "a": "Sahara", "opts": ["Sahara", "Nijl", "Amazone", "Rijn"], "expl": "De Sahara is een woestijn; de rest zijn rivieren."}, {"q": "Wat hoort er niet bij?", "a": "Aardappel", "opts": ["Aardappel", "Appel", "Peer", "Kers"], "expl": "Aardappel is een groente; de rest is fruit."}, {"q": "Wat hoort er niet bij?", "a": "Trommel", "opts": ["Trommel", "Trompet", "Fluit", "Saxofoon"], "expl": "Een trommel is een slaginstrument; de rest blaasinstrumenten."}, {"q": "Wat hoort er niet bij?", "a": "Beethoven", "opts": ["Beethoven", "Rembrandt", "Van Gogh", "Vermeer"], "expl": "Beethoven was componist; de rest waren schilders."}, {"q": "Wat hoort er niet bij?", "a": "Leeuw", "opts": ["Leeuw", "Koe", "Schaap", "Geit"], "expl": "Een leeuw is geen boerderijdier."}, {"q": "Wat hoort er niet bij?", "a": "Zon", "opts": ["Zon", "Mercurius", "Aarde", "Jupiter"], "expl": "De zon is een ster; de rest zijn planeten."}, {"q": "Wat hoort er niet bij?", "a": "Wiskunde", "opts": ["Wiskunde", "Nederlands", "Engels", "Frans"], "expl": "Wiskunde is geen taal; de rest wel."}, {"q": "Wat hoort er niet bij?", "a": "Appel", "opts": ["Appel", "Hamer", "Zaag", "Schroevendraaier"], "expl": "Een appel is geen gereedschap."}, {"q": "Wat hoort er niet bij?", "a": "Groen", "opts": ["Groen", "Blauw", "Geel", "Rood"], "expl": "Groen is geen primaire kleur; de rest wel."}, {"q": "Wat hoort er niet bij?", "a": "Bot", "opts": ["Bot", "Hart", "Lever", "Long"], "expl": "Een bot is geen orgaan; de rest wel."}, {"q": "Wat hoort er niet bij?", "a": "Boot", "opts": ["Boot", "Auto", "Fiets", "Trein"], "expl": "Een boot vaart over water; de rest rijdt over land."}, {"q": "Wat hoort er niet bij?", "a": "Walvis", "opts": ["Walvis", "Haring", "Zalm", "Tonijn"], "expl": "Een walvis is een zoogdier; de rest zijn vissen."}, {"q": "Wat hoort er niet bij?", "a": "Komkommer", "opts": ["Komkommer", "Aardbei", "Framboos", "Bosbes"], "expl": "Komkommer is een groente; de rest zijn bessen/fruit."}];
+const STORE_KEY = "oddoneout_best";
+const ROUND = Math.min(10, ALL.length);
+let quiz=[], idx=0, score=0, answered=false;
+
+function getBest(){ try{return parseInt(localStorage.getItem(STORE_KEY))||0;}catch(e){return 0;} }
+function setBest(v){ try{localStorage.setItem(STORE_KEY,v);}catch(e){} }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+function startRound(){
+  quiz = shuffle(ALL).slice(0, ROUND).map(it=>{
+    const opts = it.opts.length>2 ? shuffle(it.opts) : it.opts.slice();
+    return {q:it.q, a:it.a, opts, expl:it.expl};
+  });
+  idx=0; score=0;
+  document.getElementById("endscreen").classList.add("hidden");
+  document.getElementById("quizscreen").classList.remove("hidden");
+  document.getElementById("best").textContent = getBest();
+  showQuestion();
+}
+
+function showQuestion(){
+  answered=false;
+  const item = quiz[idx];
+  document.getElementById("qnum").textContent = "Vraag "+(idx+1)+"/"+ROUND;
+  document.getElementById("score").textContent = score;
+  document.getElementById("progbar").style.width = (idx/ROUND*100)+"%";
+  document.getElementById("question").textContent = item.q;
+  const box = document.getElementById("answers");
+  box.className = "answers" + (item.opts.length===2 ? " two" : "");
+  box.innerHTML = "";
+  item.opts.forEach(opt=>{
+    const b=document.createElement("button");
+    b.className="ans"; b.textContent=opt;
+    b.addEventListener("click",()=>choose(b, opt, item));
+    box.appendChild(b);
+  });
+  const ex=document.getElementById("expl"); ex.classList.add("hidden"); ex.textContent="";
+  document.getElementById("next").classList.add("hidden");
+}
+
+function choose(btn, opt, item){
+  if(answered) return;
+  answered=true;
+  document.querySelectorAll(".ans").forEach(b=>{
+    b.disabled=true;
+    if(b.textContent===item.a) b.classList.add("correct");
+    else if(b===btn) b.classList.add("wrong");
+    else b.classList.add("dim");
+  });
+  if(opt===item.a){ score++; document.getElementById("score").textContent=score; }
+  const ex=document.getElementById("expl");
+  ex.textContent = item.expl; ex.classList.remove("hidden");
+  const nb=document.getElementById("next");
+  nb.textContent = (idx===ROUND-1) ? "Bekijk resultaat" : "Volgende";
+  nb.classList.remove("hidden");
+  nb.scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+
+function next(){
+  if(!answered) return;
+  idx++;
+  if(idx>=ROUND){ endRound(); return; }
+  showQuestion();
+}
+
+function endRound(){
+  document.getElementById("progbar").style.width="100%";
+  document.getElementById("quizscreen").classList.add("hidden");
+  document.getElementById("next").classList.add("hidden");
+  document.getElementById("endscreen").classList.remove("hidden");
+  document.getElementById("qnum").textContent = "Klaar!";
+  document.getElementById("endscore").textContent = score+"/"+ROUND;
+  const pct = score/ROUND*100;
+  let r;
+  if(pct===100) r="🏆 Perfect!";
+  else if(pct>=80) r="⭐ Uitstekend";
+  else if(pct>=60) r="👍 Goed gedaan";
+  else if(pct>=40) r="🙂 Niet slecht";
+  else r="💪 Volgende keer beter";
+  document.getElementById("endrating").textContent = r;
+  const b=getBest();
+  if(score>b){ setBest(score); document.getElementById("endsub").textContent="Nieuw record! 🎉"; }
+  else { document.getElementById("endsub").textContent="Je beste score: "+b+"/"+ROUND; }
+  document.getElementById("best").textContent = getBest();
+}
+
+document.getElementById("next").addEventListener("click", next);
+document.getElementById("restart").addEventListener("click", startRound);
+startRound();
+</script>
+</body>
+</html>
